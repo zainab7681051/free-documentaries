@@ -1,0 +1,22 @@
+[
+  {
+    "docId": 1,
+    "genreId": 4
+  },
+  {
+    "docId": 1,
+    "genreId": 7
+  },
+  {
+    "docId": 2,
+    "genreId": 4
+  },
+  {
+    "docId": 2,
+    "genreId": 7
+  },
+  {
+    "docId": 3,
+    "genreId": 9
+  }
+]
