@@ -108,12 +108,14 @@
         >
           <v-text-field
             :append-icon-cb="() => {}"
+            v-model="search"
             placeholder="Search..."
             single-line
             append-icon="mdi-magnify"
             color="white"
             hide-details
             class="mr-4"
+            v-on:keyup.enter="Search"
           ></v-text-field>
         <v-switch
         v-model="$vuetify.theme.dark"
@@ -134,7 +136,8 @@ export default {
   name: 'main-comp',
   
   data: () => ({
-    drawer:null
+    drawer:null,
+    search:''
   }),
 
   computed: {
@@ -144,10 +147,24 @@ export default {
     ])
   },
   methods:{
+    Search(){   
+      try {
+        this.$store
+        .dispatch('setSearch',this.search)
+      } catch (e) {
+        console.log(e)
+      }
+      
+    },
     logout(){
-      this.$store.dispatch('setToken', null)
-      this.$store.dispatch('setUser', null)
-      this.$router.push({
+      this.$store
+      .dispatch('setToken', null)
+      
+      this.$store
+      .dispatch('setUser', null)
+
+      this.$router
+      .push({
         name: 'welcome'
       })
 

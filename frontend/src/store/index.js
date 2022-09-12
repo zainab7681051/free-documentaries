@@ -13,8 +13,7 @@ export default new Vuex.Store({
     token:null,
     user:null,
     isUserLoggedIn:false,
-    todo:{list:[]},//object in array==>object{array:[1:{object},2:{object}]}
-    id:1
+    search:''
   },
   getters: {
   },
@@ -26,30 +25,8 @@ export default new Vuex.Store({
     setUser(state, user){
       state.user=user
     },
-    setData(state, data){
-      state.todo.list.push(data)
-      state.todo.list.sort((a,b)=>b.id-a.id)
-    },
-    DeleteAll(state){
-      state.todo={list:[]}
-
-    },
-    Check(state,todo){
-      state.todo.list.forEach( function(element, index) {
-        if(element.id==todo.id){
-          element.toDoDone=!element.toDoDone
-        }
-      });
-    },
-    DeleteOne(state,todo){
-      state.todo.list.forEach( function(element, index) {
-        if(element.id==todo.id){
-         state.todo.list.splice(index,1)//at todo.id index delete one 
-        }
-      });
-    },
-    Increment(state){
-      state.id++
+    setSearch(state, search){
+      state.search=search
     }
 
   },
@@ -60,23 +37,10 @@ export default new Vuex.Store({
     setUser({commit}, user){
       commit('setUser', user)
     },
-    setData({commit}, data){
-      commit('setData', data)
-    },
-    Check({commit}, todo){
-      commit('Check', todo)
-    },
-    DeleteOne({commit},todo){
-      commit('DeleteOne',todo)
-    },
-    DeleteAll({commit}){
-      commit('DeleteAll')
-    },
-    Increment({commit}){
-      commit('Increment')
-    },
+    setData({commit}, search){
+      commit('setSearch', search)
+    }
     
-
   },
   modules: {
   }

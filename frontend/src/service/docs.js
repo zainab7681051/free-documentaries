@@ -2,14 +2,14 @@ import axios from './axios.js'
 
 export default{
 
-	getAll (){
-		return axios().get('docs')
+	getAll (search){
+		return axios().get('docs',{
+			params:{
+				search:search
+			}
+		})
 	},
 
-	like(id){
-		return axios().post(`docs/${id}`)
-	},
-	
 	//ADMIN
 /*
 	sumbit (docs){

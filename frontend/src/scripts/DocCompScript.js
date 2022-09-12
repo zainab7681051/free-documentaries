@@ -7,15 +7,17 @@ export default {
   data:()=>({
     fatalError:'',
     dialog:false,
+    player:false,
+    youtubeId:'',
+    title:'',
+    search:'',
     docs:{}
   }),
 
 
   async mounted(){      
     try {
-      
-      this.docs=(await DocsService.getAll()).data
-      
+      this.docs=(await DocsService.getAll(this.search)).data
     } catch (e) {
     console.log(e)
     }
@@ -23,32 +25,32 @@ export default {
   },  
   
   methods: {
-    async watch () {
+    async watch (youtubeId,title) {
         try {
-            this.docs=(await DocsService.getAll()).data
-            this.docs.map(d=>console.log(d))
-        }catch(error) {
-          this.fatalError=error.response.data.error;
+          console.log(youtubeId, title)
+          this.youtubeId=youtubeId
+          this.title=title
+          this.player=true
+        }catch(e) {
+          console.log(e)
+          this.player=false
+          this.fatalError='something went wrong...';
           this.dialog=true
         }
     },
-
-/*  async guestCheck(todo){ 
-    try {
-      
-      await this.$store.dispatch(
-      'Check',todo)
-      this.toDoList=await this.$store.state.todo
-      this.clear()            
-       
-    } catch (error) {
-      this.fatalError=error.response.data.error;
-      this.dialog=true
+    async Search(){
+      try {
+        this.search=this.$store.state.search
+        this.docs=(await DocsService.getAll(this.search)).data
+        this.search=''
+      } catch (e) {
+        console.log(e)
+        this.fatalError='could not find documentary...';
+        this.dialog=true
+      }
     }
-    
-    },
 
-*/
   },
 
 }
+

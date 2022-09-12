@@ -6,6 +6,7 @@ module.exports={
 
 	async getAll(req,res){
 		try {
+			console.log(req)
 			const docs=await Docs.findAll({
 				limit:9,
 				order:[
