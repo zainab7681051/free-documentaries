@@ -18,7 +18,7 @@ app.use(bodyparser.urlencoded({ extended: true }));
 require('./passport')
 require('./routes.js')(app); //belongs inside sync?
 
-sequelize.sync({ force: true })
+sequelize.sync({ force: false })
 .then(() => {
   console.log(`resync`)
   app.listen(config.port)

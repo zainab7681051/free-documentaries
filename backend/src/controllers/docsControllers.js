@@ -7,21 +7,18 @@ module.exports={
 	async getAll(req,res){
 		try {
 			const docs=await Docs.findAll({
-				where:{},
+				limit:9,
 				order:[
 				['createdAt', 'DESC'],
 				['updatedAt', 'DESC'],
 				]
 			})
+			
 			if(docs[0]){
-				console.log(docs)
-				res.status(200).send({
-					docs,
-					message:'documentaries were fetched successfuly :)'
-				})
+				res.status(200).send(docs)
 			}else{
-					res.status(200).send({
-					message:'No documentaries...sorry...'
+				res.status(200).send({
+				message:'No documentaries...sorry...'
 				})
 			}
 		} catch(e) {
@@ -32,7 +29,7 @@ module.exports={
 		}
 	},
 
-	async guestUpdate(req,res){
+	async like(req,res){
 		try {
 			const {id}=req.params
 		   
@@ -49,7 +46,7 @@ module.exports={
 		   }
 		   else{
 		   	return res.status(400).send({
-		   		error: 'cannot update because documentaries does not exist'
+		   		error: 'cannot like/dislike because documentary does not exist'
 		   	})
 		   }
    

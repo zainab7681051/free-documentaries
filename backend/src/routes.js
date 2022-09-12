@@ -8,7 +8,7 @@ module.exports=(app)=>{
 	app.get('/docs',
 		docsController.getAll)
 	app.post('/docs/:id',
-		docsController.guestUpdate)
+		docsController.like)
 
 	/*ADMIN*/
 /*	app.post('/admin/register',
