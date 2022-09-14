@@ -16,6 +16,8 @@
 
           <contact-comp v-if="msg=='CONTACT US'"/> 
           
+          <download-comp v-if="msg=='DOWNLOAD'"/> 
+          
         </v-card>
     </v-flex><!-- 
   </v-container> -->

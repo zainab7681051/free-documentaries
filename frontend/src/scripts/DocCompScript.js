@@ -10,7 +10,9 @@ export default {
     player:false,
     youtubeId:'',
     title:'',
-    docs:{}
+    docs:{},
+    download:false,
+    dialog2:false
   }),
 
 
@@ -30,6 +32,8 @@ export default {
           this.youtubeId=youtubeId
           this.title=title
           this.player=true
+          this.dialog2=true
+
         }catch(e) {
           this.player=false
           this.fatalError='something went wrong in the video player...';

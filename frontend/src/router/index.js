@@ -6,6 +6,7 @@ import ContactView from '../views/ContactView.vue'
 import RegisterView from '../views/Register.vue'
 import LoginView from '../views/Login.vue'
 import EditProfView from '../views/EditProfView.vue'
+import DownloadView from '../views/DownloadView.vue'
 
 Vue.use(VueRouter)
 
@@ -28,6 +29,11 @@ const routes = [
     path: '/contact',
     name: 'contact',
     component:ContactView
+  },
+  {
+    path: '/download',
+    name: 'download',
+    component:DownloadView
   },
   {
     path: '/admin-register',

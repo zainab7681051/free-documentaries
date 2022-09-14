@@ -8,13 +8,10 @@
       <v-layout column>
         <v-layout>
           <v-container>
-          <!---------------------------->
-          <!-----------DOCS------------->
-          <!---------------------------->
             <template>
               <div>
                 <v-dialog
-                v-model="player"
+                v-model="dialog2"
                 width="600"
                 height="300">
                   <template v-slot:activator="{on, attrs}">                  
@@ -48,8 +45,14 @@
                                 <v-btn
                                 color="error"
                                 class="ml-4 mt-2"
-                                >
+                                :to="{
+                                    name: 'download', 
+                                    params:{
+                                      docId: doc.id
+                                    }
+                                  }">
                                   Download
+                                  <!-- @click="download=true; dialog2=true" -->
                                 </v-btn>
                               </v-flex>
                             </v-layout>
@@ -79,7 +82,8 @@
                       </v-card>
                     </v-flex>
                   </template>
-                  <v-card>
+                  <!-- youtube player box -->
+                  <v-card v-if="player">
                     <iframe 
                     width="600" 
                     height="300" 
@@ -94,32 +98,59 @@
                     picture-in-picture" 
                     allowfullscreen>
                     </iframe>
-                    <!-- <youtube
-                      :video-id="youtubeId"
-                      :player-width="600"
-                      :player-height="300">
-                    </youtube>  -->
                     <v-card-actions>
                       <v-spacer></v-spacer>
                       <v-btn
                         text
-                        @click="player = false">
+                        @click="player=false; dialog2=false">
                         Cancel
                       </v-btn>
                     </v-card-actions>
                   </v-card>
+                  <!------------------------->
+                  <!-- <v-card v-if="download">
+                   <v-card-title>
+                    DOWNLOAD
+                  </v-card-title>
+                  <div>
+                    <iframe 
+                    id="widgetApi" 
+                    :src="`https://convert2mp3s.com/api/widget?url=https://
+                    www.youtube.com/watch?v=${youtubeId}`"
+                    width="100%" 
+                    height="100%" 
+                    allowtransparency="true" 
+                    scrolling="no" 
+                    style="border:none">
+                    </iframe>
+                  </div>
+                    <v-divider></v-divider>
+
+                  <v-card-actions>
+                    <v-spacer></v-spacer>
+                      <v-btn
+                        text
+                        @click="download=false;dialog2=false">
+                        done
+                      </v-btn>
+
+                      <v-btn
+                      text
+                      @click="download=false;dialog2=false">
+                        Cancel
+                      </v-btn>
+                    </v-card-actions>
+                  </v-card> -->
+                  <!--------------------------->
                 </v-dialog>
               </div>
-            </template>          
-          <!---------------------------->
-          <!---------------------------->
-          <!---------------------------->
+            </template>
           </v-container>
         </v-layout>
       </v-layout>
       </template>
       <!-- ERROR BOX -->
-      <v-card>
+      <v-card v-if="fatalError">
         <v-card-title>
           ERROR!
         </v-card-title>
@@ -134,7 +165,7 @@
           <v-spacer></v-spacer>
           <v-btn
             text
-            @click="dialog = false"
+            @click="dialog=false;fatalError=''"
           >
             Cancel
           </v-btn>
