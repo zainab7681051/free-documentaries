@@ -13,7 +13,6 @@ export default new Vuex.Store({
     token:null,
     user:null,
     isUserLoggedIn:false,
-    search:''
   },
   getters: {
   },
@@ -24,11 +23,7 @@ export default new Vuex.Store({
     },
     setUser(state, user){
       state.user=user
-    },
-    setSearch(state, search){
-      state.search=search
     }
-
   },
   actions: {
     setToken({commit}, token){
@@ -36,9 +31,6 @@ export default new Vuex.Store({
     },
     setUser({commit}, user){
       commit('setUser', user)
-    },
-    setData({commit}, search){
-      commit('setSearch', search)
     }
     
   },

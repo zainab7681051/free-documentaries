@@ -115,7 +115,6 @@
             color="white"
             hide-details
             class="mr-4"
-            v-on:keyup.enter="Search"
           ></v-text-field>
         <v-switch
         v-model="$vuetify.theme.dark"
@@ -130,50 +129,7 @@
   </header>
 </template>
 
-<script>
-import {mapState} from 'vuex'
-export default {
-  name: 'main-comp',
-  
-  data: () => ({
-    drawer:null,
-    search:''
-  }),
-
-  computed: {
-    ...mapState([
-      'isUserLoggedIn',
-      'user'
-    ])
-  },
-  methods:{
-    Search(){   
-      try {
-        this.$store
-        .dispatch('setSearch',this.search)
-      } catch (e) {
-        console.log(e)
-      }
-      
-    },
-    logout(){
-      this.$store
-      .dispatch('setToken', null)
-      
-      this.$store
-      .dispatch('setUser', null)
-
-      this.$router
-      .push({
-        name: 'welcome'
-      })
-
-    }
-  },
-  props: {
-    msg: String
-  }
-}
+<script src="../scripts/HeadCompScript.js">
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

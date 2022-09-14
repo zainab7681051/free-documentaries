@@ -2,25 +2,55 @@ const db=require('../models')
 const Docs=db.docs
 const Genres=db.genres
 const User=db.user
+const Op=db.SEQUELIZE.Op
 module.exports={
 
 	async getAll(req,res){
 		try {
-			console.log(req)
-			const docs=await Docs.findAll({
-				limit:9,
-				order:[
-				['createdAt', 'DESC'],
-				['updatedAt', 'DESC'],
-				]
-			})
+			let docs = null
+			const search=req.query.search
 			
-			if(docs[0]){
-				res.status(200).send(docs)
-			}else{
-				res.status(200).send({
-				message:'No documentaries...sorry...'
+			if(search){
+				docs=await Docs.findAll({
+					where:
+					{
+						[Op.or]: [
+						{ title : { [Op.iLike]: `%${search}%` }}, 
+						{ description: { [Op.iLike]: `%${search}%` }},
+						{ imageAdress : { [Op.iLike]: `%${search}%` }},
+						{ youtubeId : { [Op.iLike]: `%${search}%` }}
+					 ] 
+					},
+					limit:9,
+					
+					order:[
+						['createdAt', 'DESC'],
+						['updatedAt', 'DESC'],
+					],
 				})
+
+				if(docs[0]){
+					res.status(200).send(docs)
+				}else{
+					res.status(400).send({
+					error:'No documentaries found. try again.'
+					})
+				}
+			}else{
+				docs=await Docs.findAll({
+					limit:9,
+					order:[
+					['createdAt', 'DESC'],
+					['updatedAt', 'DESC'],
+					]
+				})
+				if(docs[0]){
+					res.status(200).send(docs)
+				}else{
+					res.status(400).send({
+					error:'No documentaries...sorry...'
+				})
+			}
 			}
 		} catch(e) {
 			console.log(e)

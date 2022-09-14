@@ -17,7 +17,7 @@
                 v-model="player"
                 width="600"
                 height="300">
-                  <template v-slot:activator="{on, attrs}">
+                  <template v-slot:activator="{on, attrs}">                  
                     <v-flex xs12>
                       <v-card 
                       v-for="doc in docs"

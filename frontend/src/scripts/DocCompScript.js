@@ -10,47 +10,55 @@ export default {
     player:false,
     youtubeId:'',
     title:'',
-    search:'',
     docs:{}
   }),
 
 
   async mounted(){      
     try {
-      this.docs=(await DocsService.getAll(this.search)).data
+      this.docs=(await DocsService.getAll()).data
     } catch (e) {
-    console.log(e)
+      this.fatalError=e.response.data.error;
+      this.dialog=true
     }
     
   },  
   
   methods: {
-    async watch (youtubeId,title) {
+      async watch (youtubeId,title) {
         try {
-          console.log(youtubeId, title)
           this.youtubeId=youtubeId
           this.title=title
           this.player=true
         }catch(e) {
-          console.log(e)
           this.player=false
-          this.fatalError='something went wrong...';
+          this.fatalError='something went wrong in the video player...';
           this.dialog=true
         }
     },
-    async Search(){
-      try {
-        this.search=this.$store.state.search
-        this.docs=(await DocsService.getAll(this.search)).data
-        this.search=''
-      } catch (e) {
+    /*async download(){
+      try{
+  
+      }catch(e){
         console.log(e)
-        this.fatalError='could not find documentary...';
-        this.dialog=true
+      }
+    }*/ 
+  },
+
+  watch: {
+    '$route.query.search': {
+      immediate: true,
+      async handler (value) {
+          try{
+            this.docs = (await DocsService.getAll(value)).data
+          }catch(e){
+            this.fatalError=e.response.data.error;
+            this.dialog=true
+
+          }
       }
     }
-
-  },
+  }
 
 }
 

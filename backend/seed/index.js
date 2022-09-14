@@ -1,4 +1,4 @@
-const db= require('../models/')
+const db= require('../src/models/')
 const DOCS=db.docs
 const GENRES=db.genres
 const DOCS_GENRES=db.docs_genres
