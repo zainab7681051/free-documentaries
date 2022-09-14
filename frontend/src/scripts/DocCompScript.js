@@ -19,6 +19,7 @@ export default {
   async mounted(){      
     try {
       this.docs=(await DocsService.getAll()).data
+      console.log(this.docs)
     } catch (e) {
       this.fatalError=e.response.data.error;
       this.dialog=true

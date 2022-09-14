@@ -7,8 +7,6 @@ module.exports=(app)=>{
 	/*USERS*/
 	app.get('/docs',
 		docsController.getAll)
-	app.post('/docs/:id',
-		docsController.like)
 
 	/*ADMIN*/
 /*	app.post('/admin/register',

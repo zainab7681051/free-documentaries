@@ -27,6 +27,9 @@ module.exports={
 						['createdAt', 'DESC'],
 						['updatedAt', 'DESC'],
 					],
+					include:[{
+						model:Genres
+					}]
 				})
 
 				if(docs[0]){
@@ -42,7 +45,10 @@ module.exports={
 					order:[
 					['createdAt', 'DESC'],
 					['updatedAt', 'DESC'],
-					]
+					],
+					include:[{
+						model:Genres
+					}]
 				})
 				if(docs[0]){
 					res.status(200).send(docs)
@@ -57,35 +63,6 @@ module.exports={
 			res.status(500).send({
 				error:'cannot find documetaries for you :('
 			})
-		}
-	},
-
-	async like(req,res){
-		try {
-			const {id}=req.params
-		   
-			const data={
-			}
-			const docs=await Docs.update(data,{
-				where:{
-					id:id
-				}
-			})
-		   if (docs) {
-		   	console.log(docs)
-		   	return res.send(data)
-		   }
-		   else{
-		   	return res.status(400).send({
-		   		error: 'cannot like/dislike because documentary does not exist'
-		   	})
-		   }
-   
-		} catch(e) {
-			console.log(e);
-			res.status(500).send({
-		   		error: 'cannot update docs :('
-		   	})
 		}
 	},
 /////////////////////////////////////////////////////////////////////////

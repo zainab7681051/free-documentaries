@@ -32,6 +32,17 @@
                                   {{doc.title}}
                                 </div>
                               </v-flex>
+                              
+                              <v-flex>
+                                <div> Tags: 
+                                <v-btn
+                                v-for="genre in doc.genres"
+                                class="mt-2 mb-2 ml-2 mr-2"
+                                small>
+                                {{genre.genre}}
+                                </v-btn>
+                                </div>
+                              </v-flex>
 
                               <v-flex>
                                 <v-btn
@@ -48,7 +59,7 @@
                                 :to="{
                                     name: 'download', 
                                     params:{
-                                      docId: doc.id
+                                      docId: doc.id+'+'+doc.youtubeId
                                     }
                                   }">
                                   Download
@@ -107,40 +118,6 @@
                       </v-btn>
                     </v-card-actions>
                   </v-card>
-                  <!------------------------->
-                  <!-- <v-card v-if="download">
-                   <v-card-title>
-                    DOWNLOAD
-                  </v-card-title>
-                  <div>
-                    <iframe 
-                    id="widgetApi" 
-                    :src="`https://convert2mp3s.com/api/widget?url=https://
-                    www.youtube.com/watch?v=${youtubeId}`"
-                    width="100%" 
-                    height="100%" 
-                    allowtransparency="true" 
-                    scrolling="no" 
-                    style="border:none">
-                    </iframe>
-                  </div>
-                    <v-divider></v-divider>
-
-                  <v-card-actions>
-                    <v-spacer></v-spacer>
-                      <v-btn
-                        text
-                        @click="download=false;dialog2=false">
-                        done
-                      </v-btn>
-
-                      <v-btn
-                      text
-                      @click="download=false;dialog2=false">
-                        Cancel
-                      </v-btn>
-                    </v-card-actions>
-                  </v-card> -->
                   <!--------------------------->
                 </v-dialog>
               </div>

@@ -31,7 +31,7 @@ const routes = [
     component:ContactView
   },
   {
-    path: '/download',
+    path: '/download/:docId',
     name: 'download',
     component:DownloadView
   },
