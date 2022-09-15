@@ -38,7 +38,9 @@
                                 <v-btn
                                 v-for="genre in doc.genres"
                                 class="mt-2 mb-2 ml-2 mr-2"
-                                small>
+                                :key="genre.id"
+                                small
+                                @click="getByGenres(genre)">
                                 {{genre.genre}}
                                 </v-btn>
                                 </div>

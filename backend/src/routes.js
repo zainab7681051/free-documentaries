@@ -8,6 +8,9 @@ module.exports=(app)=>{
 	app.get('/docs',
 		docsController.getAll)
 
+	app.get('/docs/:id',
+		docsController.getAllFromGenre)
+
 	/*ADMIN*/
 /*	app.post('/admin/register',
 		ValidController.register,

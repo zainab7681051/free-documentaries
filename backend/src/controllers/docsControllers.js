@@ -65,11 +65,47 @@ module.exports={
 			})
 		}
 	},
+
+	async getAllFromGenre(req,res){
+		try {
+			let docs = null
+			let id=req.params.id
+		
+			docs=await Genres.findOne({
+				where:{
+					id:id
+				},
+				limit:9,
+				order:[
+					['createdAt', 'DESC'],
+					['updatedAt', 'DESC'],
+				],
+				include:[{
+					model:Docs,
+					include:[{model:Genres}]
+				}]
+			})
+
+			if(docs){
+				res.status(200).send(docs)
+			}else{
+				res.status(400).send({
+				error:'No documentaries found. try again.'
+				})
+			}
+
+		} catch(e) {
+			console.log(e)
+			res.status(500).send({
+				error:'cannot find documetaries for you :('
+			})
+		}
+	},
 /////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
-
-	async update(req,res){
+//ADMIN
+/*	async update(req,res){
 		try {
 			const {id}=req.params
 		   
@@ -195,5 +231,5 @@ module.exports={
 		}
 	},
 
-
+*/
 }

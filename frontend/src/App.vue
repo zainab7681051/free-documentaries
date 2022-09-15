@@ -10,10 +10,7 @@
         <router-view/>
       </v-container>
     </v-main>
-<!-- ******************************* -->
-    <!-- SITE FOOTER -->
-<!-- ******************************* -->
-  </v-app>
+ </v-app>
 </template>
 
 <script>

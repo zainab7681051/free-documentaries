@@ -10,7 +10,11 @@ export default{
 		})
 	},
 
-	//ADMIN
+	getAllFromGenre(id){
+		return axios().get(`docs/${id}`)
+	}
+
+	//TODO-TASK=>finish ADMIN api
 /*
 	sumbit (docs){
 		return axios().post('docs',list)

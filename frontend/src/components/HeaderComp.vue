@@ -97,7 +97,7 @@
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
       <v-toolbar-title
-              @click="$router.push('/docs')"
+              @click="$router.push('/doc')"
               class="display-1"
               style="cursor:pointer">FREE DOCS</v-toolbar-title>
       <v-spacer/>

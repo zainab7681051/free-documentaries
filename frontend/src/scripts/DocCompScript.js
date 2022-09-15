@@ -19,7 +19,8 @@ export default {
   async mounted(){      
     try {
       this.docs=(await DocsService.getAll()).data
-      console.log(this.docs)
+      console.log("DOCS",this.docs)
+      
     } catch (e) {
       this.fatalError=e.response.data.error;
       this.dialog=true
@@ -41,13 +42,18 @@ export default {
           this.dialog=true
         }
     },
-    /*async download(){
-      try{
-  
-      }catch(e){
-        console.log(e)
-      }
-    }*/ 
+
+     async getByGenres (genres) {
+        try {
+          console.log(genres)
+          const x=(await DocsService.getAllFromGenre(genres.id)).data
+          this.docs=x.docs
+        }catch(e) {
+          console.log(e)
+          this.fatalError=e.response.data.error
+          this.dialog=true
+        }
+    }
   },
 
   watch: {
