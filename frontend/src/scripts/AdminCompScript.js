@@ -11,6 +11,13 @@ export default {
 
   }),
   
+  computed: {
+    ...mapState([
+      'isUserLoggedIn',
+      'user'
+    ])
+  },
+  
   async mounted(){      
     try {
       this.docs=(await DocsService.getAllAsAdmin()).data

@@ -5,11 +5,11 @@
     <header-comp/>
 <!-- ******************************* -->
 <!-- SITE MAIN -->
-    <v-main>
+    <main>
       <v-container fluid>
         <router-view/>
       </v-container>
-    </v-main>
+    </main>
  </v-app>
 </template>
 
