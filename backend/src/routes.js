@@ -29,6 +29,14 @@ module.exports=(app)=>{
 		isUserAuethController,
 		docsController.getAll)
 
+	app.get('/admin/genres',
+		isUserAuethController,
+		docsController.getGenres)
+
+	app.post('/admin/docs-genres',
+		isUserAuethController,
+		docsController.createAssociation)
+
 	app.delete('/admin/docs/:id',
 		isUserAuethController,
 		docsController.deleteById)

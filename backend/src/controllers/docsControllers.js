@@ -2,6 +2,7 @@ const db=require('../models')
 const Docs=db.docs
 const Genres=db.genres
 const User=db.user
+const Docs_Genres=db.docs_genres
 const Op=db.SEQUELIZE.Op
 module.exports={
 
@@ -101,10 +102,32 @@ module.exports={
 			})
 		}
 	},
-/////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////
-//ADMIN
+
+	async getGenres(req,res){
+		try {
+			const genres=await Genres.findAll()
+			genres.map(g=>console.log(g))
+			return res.status(200).send(genres)
+		} catch(e) {
+			console.log(e);
+			res.status(500).send({
+				error: 'cannot get genres :('
+			})
+		}
+	},
+
+	async createAssociation(req,res){
+		try {
+			const association=await Docs_Genres.create(req.body)
+			return res.status(200).send({
+				message: 'association created'})
+		} catch(e) {
+			console.log(e);
+			res.status(500).send({
+				error: 'cannot create association :('
+			})
+		}
+	},
 
 	async create(req,res){
 		try {

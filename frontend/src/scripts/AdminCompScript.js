@@ -1,27 +1,77 @@
+import { validationMixin } from 'vuelidate'
+import { required} from 'vuelidate/lib/validators'
 import {mapState} from 'vuex'
-import DocsService from '../service/docs.js'
+import AdminService from '../service/admin.js'
 
 export default {
   name: 'admin-comp',
-  
+  mixins: [validationMixin],
   data: () => ({
     fatalError:'',
     dialog:false,
     docs:{},
+    addingDoc:false,
+    title: '',
+    description: '',
+    imageAdress: '',
+    youtubeId: '',
+    genres: {},
+    chosenGenres:[]
 
   }),
+
+    validations: {
+    title: { 
+      required, 
+    },
+    description:{
+      required,
+    },
+    imageAdress: { 
+      required, 
+    },
+    youtubeId:{
+      required,
+    }
+  },
   
   computed: {
     ...mapState([
       'isUserLoggedIn',
       'user'
-    ])
+    ]),
+      titleErrors () {
+        const errors = []
+        if (!this.$v.title.$dirty) return errors
+        !this.$v.title.required && errors.push('title is required.')
+        return errors
+      },
+      descriptionErrors () {
+        const errors = []
+        if (!this.$v.description.$dirty) return errors
+        !this.$v.description.required && errors.push('description is required')
+        return errors
+      },
+      imageAdressErrors () {
+        const errors = []
+        if (!this.$v.imageAdress.$dirty) return errors
+        !this.$v.imageAdress.required && errors.push('imageAdress is required.')
+        return errors
+      },
+      youtubeIdErrors () {
+        const errors = []
+        if (!this.$v.youtubeId.$dirty) return errors
+        !this.$v.youtubeId.required && errors.push('youtubeId is required')
+        return errors
+      }
   },
-  
+
   async mounted(){      
     try {
-      this.docs=(await DocsService.getAllAsAdmin()).data
+      this.docs=(await AdminService.getAllAsAdmin()).data
+      this.genres=(await AdminService.getGenresAsAdmin()).data
       console.log("DOCS",this.docs)
+      console.log("GENRES",this.genres)
       
     } catch (e) {
       this.fatalError=e.response.data.error;
@@ -31,6 +81,60 @@ export default {
   },  
   
   methods:{
+    async add(){
+      if( !this.$v.title.$invalid&&
+          !this.$v.description.$invalid&&
+          !this.$v.imageAdress.$invalid&&
+          !this.$v.youtubeId.$invalid){
+        try {
+          data={
+            title: this.title,
+            description: this.description,
+            imageAdress: this.imageAdress,
+            youtubeId: this.youtubeId,
+          }
+          await AdminService.add(data)
+          this.docs=(await AdminService.getAllAsAdmin()).data
+
+          this.addingDoc=false;
+          this.dialog = false;
+        } catch(e) {
+          console.log(e);
+          this.addingDoc=false;
+          this.dialog = false;
+          this.fatalError=e.response.data.error;
+          this.dialog=true
+        }
+      }else{
+        this.addingDoc=false;
+        this.dialog = false;
+        this.fatalError='no empty or invalid forms'
+        this.dialog=true
+        }
+      },
+
+      async addGenre(genre){
+        try {
+          await this.chosenGenres.push(genre)
+
+        } catch(e) {
+          console.log(e);
+          this.addingDoc=false;
+          this.dialog = false;
+          this.fatalError="something went wrong...";
+          this.dialog=true
+        }
+      },
+
+      clear () {
+        this.$v.$reset()
+        this.title = ''
+        this.description = ''
+        this.imageAdress = ''
+        this.youtubeId = ''
+        this.chosenGenres=[]
+      },
+    
 
   },
   
@@ -39,7 +143,7 @@ export default {
       immediate: true,
       async handler (value) {
           try{
-            this.docs = (await DocsService.getAllAsAdmin(value)).data
+            this.docs = (await AdminService.getAllAsAdmin(value)).data
           }catch(e){
             this.fatalError=e.response.data.error;
             this.dialog=true
