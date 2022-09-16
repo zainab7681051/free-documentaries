@@ -12,7 +12,7 @@ module.exports=(app)=>{
 		docsController.getAllFromGenre)
 
 	/*ADMIN*/
-/*	app.post('/admin/register',
+	app.post('/admin/register',
 		ValidController.register,
 		AuethController.register)
 
@@ -22,7 +22,7 @@ module.exports=(app)=>{
 
 	app.post('/admin/docs',
 		isUserAuethController,
-		ValidController.docs,
+		//ValidController.docs,
 		docsController.create)
 
 	app.get('/admin/docs',
@@ -39,5 +39,5 @@ module.exports=(app)=>{
 
 	app.put('/admin/docs/:id',
 		isUserAuethController,
-		docsController.update)*/
+		docsController.update)
 }

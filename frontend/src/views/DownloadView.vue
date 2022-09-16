@@ -11,10 +11,10 @@
 
   export default {
     name: 'download',
-	
-	data: () => ({
-    //
-  }),
+  	
+  	data: () => ({
+      //
+    }),
 
     components: {
       MainComp,

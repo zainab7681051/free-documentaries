@@ -105,20 +105,33 @@ module.exports={
 ///////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 //ADMIN
-/*	async update(req,res){
+
+	async create(req,res){
+		try {
+			const docs=await Docs.create(req.body)
+
+			console.log(docs.toJSON())
+			res.status(200).send({
+				message:'documentary data was created successfuly',
+				docs:docs.toJSON()
+			})
+		} catch(e) {
+			console.log(e)
+			res.status(500).send({
+				error:'cannot create a documentaries...sorry :('
+			})
+		}
+	},
+
+	async update(req,res){
 		try {
 			const {id}=req.params
 		   
-			const data={
-				toDoText:req.body.toDoText,
-				toDoDate:req.body.toDoDate,
-				userId:req.user.id,
-				toDoDone:req.body.toDoDone? false:true
-			}
+			const data=req.body
+			console.log(data)
 			const docs=await Docs.findOne({
 				where:{
-					id:id,
-					userId:req.user.id
+					id:id
 				}
 			})
 		   if (docs) {
@@ -129,7 +142,7 @@ module.exports={
 				}
 			})
 		   	console.log(newDocs)
-		   	return res.send(data)
+		   	return res.status(200).send(data)
 		   }
 		   else{
 		   	return res.status(400).send({
@@ -145,37 +158,12 @@ module.exports={
 		}
 	},
 
-	async create(req,res){
-		try {
-			const a={
-				toDoText:req.body.toDoText,
-				toDoDate:req.body.toDoDate,
-				userId:req.user.id,
-				toDoDone:false
-
-			}
-			const docs=await Docs.create(a)
-
-			console.log(docs.toJSON())
-			res.status(200).send({
-				message:'documentaries was created successfuly',
-				docs:docs.toJSON()
-			})
-		} catch(e) {
-			console.log(e)
-			res.status(400).send({
-				error:'cannot create a todo :('
-			})
-		}
-	},
-
 	async deleteById(req,res){
 		try {
 			const {id}=req.params
 			const docs=await Docs.findOne({
 				where:{
-					id:id,
-					userId:req.user.id
+					id:id
 				}
 			})
 			console.log(docs)
@@ -183,8 +171,7 @@ module.exports={
 				const old=await Docs.destroy({
 					where:{
 					id:id,
-					userId:req.user.id
-				}
+					}
 				})
 				return res.status(200).send({
 					old,
@@ -197,39 +184,35 @@ module.exports={
 			}
 		} catch(e) {
 			console.log(e)
-			res.status(400).send({
-				error:'cannot delete your todo\ :('
+			res.status(500).send({
+				error:'cannot delete documentaries...sorry :('
 			})
 		}
 	},
 
 	async deleteAll(req,res){
 		try {
-			const docs=await Docs.findAll({
-				where:{
-					userId:req.user.id
-				}
-			})
+			const docs=await Docs.findAll()
 			if(docs[0]){
 				docs.forEach( async function(element, index) {
 				console.log(index,element)
 				await element.destroy()
 				});
 				return res.status(200).send({
-					message:'docs was deleted successfuly'
+					message:'docs were deleted successfuly'
 				})
 			}else{
 				 return res.status(400).send({
-				error:'No todo\'s to delete:('
+				error:'No documentaries to delete'
 			})
 			}
 		} catch(e) {
 			console.log(e)
-			res.status(400).send({
-				error:'cannot delete your todo\'s :('
+			res.status(500).send({
+				error:'cannot delete your documentaries...sorry :('
 			})
 		}
 	},
 
-*/
+
 }

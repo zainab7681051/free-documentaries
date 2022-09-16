@@ -59,7 +59,6 @@ module.exports={
 			})			
 
 			if(user){
-				console.log("user exists")
 				const validPassword=await bcrypt.compare(
 					password,user.password)
 				if(validPassword){

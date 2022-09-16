@@ -46,13 +46,12 @@
                         :counter="15"
                         @input="$v.password.$touch()"
                         @blur="$v.password.$touch()"
-                      ></v-text-field><!-- 
+                      ></v-text-field>
                       <v-checkbox
                         v-model="checkbox"
                         label="Stay Logged in?"
-                        @change="$v.checkbox.$touch()"
-                        @blur="$v.checkbox.$touch()"
-                      ></v-checkbox> -->
+                        @click="checkbox=true">
+                        </v-checkbox>
                       <v-btn
                         class="mr-4 ml-4 mb-2"
                         @click="submit"
@@ -170,22 +169,26 @@ export default {
                   password:this.password
                 })
             
-            this.$store.dispatch(
-              'setToken',
-              response
-              .data
-              .token
-              )
+                        
+            if (this.checkbox) {
+              this.$store.dispatch(
+                'setToken',
+                response
+                .data
+                .token
+                )
+              
+              this.$store.dispatch(
+                'setUser',
+                response
+                .data
+                .user
+                )
+            }
             
-            this.$store.dispatch(
-              'setUser',
-              response
-              .data
-              .user
-              )
             
             this.$router.push({
-              name:'list'
+              name:'admin-dashboard'
             })
           }catch(error) {
             this.fatalError=error.response.data.error;

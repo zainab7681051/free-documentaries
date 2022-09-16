@@ -7,7 +7,7 @@ import RegisterView from '../views/Register.vue'
 import LoginView from '../views/Login.vue'
 import EditProfView from '../views/EditProfView.vue'
 import DownloadView from '../views/DownloadView.vue'
-
+import AdminDashView from '../views/AdminDashView.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -15,10 +15,6 @@ const routes = [
     path: '/docs',
     name: 'docs',
     component: DocView
-  },
-  {
-    path: '*',
-    redirect: '/docs'
   },
   {
     path: '/about',
@@ -49,6 +45,11 @@ const routes = [
     path: '/admin-profile',
     name: 'edit-profile',
     component:EditProfView
+  },
+  {
+    path: '/admin-dashboard',
+    name: 'dasboard',
+    component:AdminDashView
   }
 ]
 
