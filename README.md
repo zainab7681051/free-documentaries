@@ -1,8 +1,9 @@
 # Free Documentaries
 PEVN stack web app, frontended in vue and backended in nodejs express and database in postgresql.
 # 
-user can log in or sign up and save their to-do list in postgreSQL database or
-they can use the app as guests, and their list will be saved in the browser cache using vuex state management.
+user can watch free YouTube documentaries embedded inside the page and download the documentaries.
+
+Admin user can add, edit, delete documentaries, and the admin page is protected from unauthorised user access.
 # 
 # tools & frameworks
 the following `stack` of tools and frameworks were used in this project
