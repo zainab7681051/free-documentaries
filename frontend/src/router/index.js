@@ -1,60 +1,49 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import DocView from '../views/DocView.vue'
-import AboutView from '../views/AboutView.vue'
-import ContactView from '../views/ContactView.vue'
-import RegisterView from '../views/Register.vue'
-import LoginView from '../views/Login.vue'
-import EditProfView from '../views/EditProfView.vue'
-import DownloadView from '../views/DownloadView.vue'
-import AdminDashView from '../views/AdminDashView.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/docs',
     name: 'docs',
-    component: DocView
+    component: ()=> import('../views/DocView.vue')
   },
   {
     path: '/about',
     name: 'about',
-    component:AboutView
+    component:()=> import('../views/AboutView.vue')
   },
   {
     path: '/contact',
     name: 'contact',
-    component:ContactView
+    component:()=> import('../views/ContactView.vue')
   },
   {
     path: '/download/:docId',
     name: 'download',
-    component:DownloadView
+    component:()=> import('../views/DownloadView.vue')
   },
   {
     path: '/admin-register',
     name: 'register',
-    component:RegisterView
+    component:()=> import('../views/Register.vue')
   },
   {
     path: '/admin-login',
     name: 'login',
-    component:LoginView
+    component:()=> import('../views/Login.vue')
   },
   {
     path: '/admin-profile',
     name: 'edit-profile',
-    component:EditProfView
+    component:()=> import('../views/EditProfView.vue')
   },
   {
     path: '/admin-dashboard',
     name: 'dasboard',
-    component:AdminDashView
+    component:()=> import('../views/AdminDashView.vue')
   },
-  {
-    path:'*',
-    redirect:'docs'
-  }
 ]
 
 const router = new VueRouter({
@@ -62,5 +51,4 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
-
 export default router

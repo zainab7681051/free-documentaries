@@ -72,6 +72,7 @@ export default {
       this.genres=(await AdminService.getGenresAsAdmin()).data
       console.log("DOCS",this.docs)
       console.log("GENRES",this.genres)
+      console.log(this.docs[0].id)
       
     } catch (e) {
       this.fatalError=e.response.data.error;
@@ -85,9 +86,10 @@ export default {
       if( !this.$v.title.$invalid&&
           !this.$v.description.$invalid&&
           !this.$v.imageAdress.$invalid&&
-          !this.$v.youtubeId.$invalid){
+          !this.$v.youtubeId.$invalid&&
+          this.chosenGenres.length!=0){
         try {
-          data={
+          const data={
             title: this.title,
             description: this.description,
             imageAdress: this.imageAdress,
@@ -95,7 +97,10 @@ export default {
           }
           await AdminService.add(data)
           this.docs=(await AdminService.getAllAsAdmin()).data
-
+          console.log(this.docs[0].id,chosenGenre.id)
+          await this.chosenGenres.map(chosenGenre=>{
+            AdminService.createAssociation(this.docs[0].id,chosenGenre.id)
+          })
           this.addingDoc=false;
           this.dialog = false;
         } catch(e) {

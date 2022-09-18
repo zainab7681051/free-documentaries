@@ -118,7 +118,11 @@ module.exports={
 
 	async createAssociation(req,res){
 		try {
-			const association=await Docs_Genres.create(req.body)
+			console.log(req.body)
+			const association=await Docs_Genres.create({
+				docId: req.body.docId,
+				genreId: req.body.genreId
+			})
 			return res.status(200).send({
 				message: 'association created'})
 		} catch(e) {

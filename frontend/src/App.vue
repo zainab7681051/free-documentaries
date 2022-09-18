@@ -1,5 +1,5 @@
 <template>
-  <v-app id="inspire">
+  <v-app>
 <!-- ******************************* -->
     <!-- SITE HEADER -->
     <header-comp/>
@@ -14,18 +14,15 @@
 </template>
 
 <script>
-import HeaderComp from './components/HeaderComp.vue'
+import HeaderComp from '@/components/HeaderComp.vue'
 
 export default { 
   name: 'App',
 
-  data: () => ({
-    
-  }),
 
-    components: {
-      HeaderComp,
-    },
+  components: {
+    HeaderComp,
+  },
 };
 </script>
 

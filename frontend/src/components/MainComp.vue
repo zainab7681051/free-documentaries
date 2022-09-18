@@ -8,15 +8,15 @@
         style="background-color:#ab92b3;">
           {{msg}}
         </v-card-title>
-          <doc-comp v-if="msg=='FREE DOCUMENTARIES FROM YOUTUBE'"/>
-
           <edit-prof-comp v-if="msg=='EDIT YOUR PROFILE' && isUserLoggedIn"/> 
 
           <about-comp v-if="msg=='ABOUT US'"/>
 
           <contact-comp v-if="msg=='CONTACT US'"/> 
           
-          <download-comp v-if="msg=='DOWNLOAD'"/> 
+          <download-comp v-if="msg=='DOWNLOAD'"/>
+          
+          <doc-comp v-if="msg=='FREE DOCUMENTARIES FROM YOUTUBE'"/> 
           
         </v-card>
     </v-flex><!-- 
