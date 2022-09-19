@@ -24,7 +24,7 @@
               block
               class="mt-2 mr-2"
               color="primary"
-              @click="addingDoc=true; dialog=true">
+              @click="clear; addingDoc=true; dialog=true">
               <h4>Add a documnetary</h4>
               </v-btn>
             </v-col>
@@ -93,12 +93,14 @@
                 <v-divider></v-divider>
                   
                   <v-btn color="green"
-                  class="mt-2">
+                  class="mt-2"
+                  @click="clear; setDoc(doc); editingDoc=true; dialog=true;">
                     edit
                   </v-btn>
                   
                   <v-btn color="red" 
-                  class="ml-2 mt-2">
+                  class="ml-2 mt-2"
+                  @click="deleteOne(doc.id)">
                     delete
                   </v-btn>
               </v-card>
@@ -182,7 +184,7 @@
             v-for="(item,index) in chosenGenres"
             :key="index"
             close
-            class="mr-1"
+            class="mr-2 mt-2"
             @click:close="chosenGenres.splice(index,1)"
             >
               {{item.genre}}
@@ -203,8 +205,121 @@
 
           <v-btn
             text
-            @click="clear;
+            @click="clear();
               addingDoc=false;
+              dialog = false;"
+          >
+            Cancel
+          </v-btn>
+
+          <v-btn
+            text
+            @click="clear"
+          >
+            Clear
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+
+
+      <v-card v-if="editingDoc">
+        <v-card-title>
+          Editing Documentary
+        </v-card-title>
+
+        <v-card-text>
+          <form 
+          class="ml-2 mr-2"
+          >
+            <v-text-field
+             v-model="title"
+              label="title"
+              required
+              :error-messages="titleErrors"
+              @input="$v.title.$touch()"
+              @blur="$v.title.$touch()">
+            </v-text-field>
+            <v-text-field
+              v-model="description"
+              label="description"
+              required
+              :error-messages="descriptionErrors"
+              @input="$v.description.$touch()"
+              @blur="$v.description.$touch()">
+            </v-text-field>
+            <v-text-field
+              v-model="imageAdress"
+              label="image adress"
+              required
+              :error-messages="imageAdressErrors"
+              @input="$v.imageAdress.$touch()"
+              @blur="$v.imageAdress.$touch()">
+            </v-text-field>
+            <v-text-field
+              v-model="youtubeId"
+              label="youtube id (not the the entire link adress)"
+              required
+              :error-messages="youtubeIdErrors"
+              @input="$v.youtubeId.$touch()"
+              @blur="$v.youtubeId.$touch()">
+            </v-text-field>
+
+            <v-menu offset-y>
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn
+                  text
+                  class="mb-2"
+                  v-bind="attrs"
+                  v-on="on"
+                >
+                  Genre
+                </v-btn>
+              </template>
+              <v-list>
+                <v-list-item
+                  v-for="(item) in genres"
+                  :key="item.id"
+                >
+                  <v-list-item-title>
+                    <v-btn
+                    text
+                    @click="addGenre(item)">
+                      {{ item.genre }}
+                    </v-btn>
+                  </v-list-item-title>
+                </v-list-item>
+              </v-list>
+            </v-menu>
+          </form>
+
+          <div>
+            <v-chip
+            v-for="(item,index) in chosenGenres"
+            :key="index"
+            close
+            class="mr-2 mt-2"
+            @click:close="chosenGenres.splice(index,1)"
+            >
+              {{item.genre}}
+            </v-chip>
+          </div>
+        </v-card-text>
+
+        <v-divider></v-divider>
+
+        <v-card-actions>
+
+          <v-btn
+            text
+            @click="edit"
+          >
+            edit
+          </v-btn>
+
+          <v-btn
+            text
+            @click="clear();
+              editingDoc=false;
               dialog = false;"
           >
             Cancel

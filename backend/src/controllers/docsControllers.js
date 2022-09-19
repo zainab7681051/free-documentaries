@@ -122,16 +122,34 @@ module.exports={
 	async createAssociation(req,res){
 		try {
 			console.log(req.body)
+
 			const association=await Docs_Genres.create({
 				docId: req.body.docId,
 				genreId: req.body.genreId
 			})
-			return res.status(200).send({
-				message: 'association created'})
+			return res.status(200).send()
 		} catch(e) {
 			console.log(e);
 			res.status(500).send({
 				error: 'cannot create association :('
+			})
+		}
+	},
+
+
+	async deleteAssociation(req,res){
+		try {
+			
+			await Docs_Genres.destroy({
+				where:{
+				docId: req.params.id,
+				}
+			})
+			return res.status(200).send()
+		} catch(e) {
+			console.log(e);
+			res.status(500).send({
+				error: 'cannot delete association :('
 			})
 		}
 	},
@@ -167,12 +185,11 @@ module.exports={
 		   if (docs) {
 		   const newDocs=await Docs.update(data,{
 				where:{
-					id:id,
-					userId:req.user.id
+					id:id
 				}
 			})
 		   	console.log(newDocs)
-		   	return res.status(200).send(data)
+		   	return res.status(200).send(newDocs)
 		   }
 		   else{
 		   	return res.status(400).send({
@@ -196,25 +213,21 @@ module.exports={
 					id:id
 				}
 			})
-			console.log(docs)
 			if(docs){
 				const old=await Docs.destroy({
 					where:{
 					id:id,
 					}
 				})
-				return res.status(200).send({
-					old,
-					message:'documentaries was deleted successfuly'
-				})
+				return res.status(200).send()
 			}else{
 				 return res.status(400).send({
-				error:'No such documentaries to delete:('
+				error:'No such documentary to delete:('
 			})
 			}
 		} catch(e) {
 			console.log(e)
-			res.status(500).send({
+			return res.status(500).send({
 				error:'cannot delete documentaries...sorry :('
 			})
 		}

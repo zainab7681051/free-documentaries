@@ -37,6 +37,10 @@ module.exports=(app)=>{
 		isUserAuethController,
 		docsController.createAssociation)
 
+	app.delete('/admin/docs-genres/:id',
+		isUserAuethController,
+		docsController.deleteAssociation)
+
 	app.delete('/admin/docs/:id',
 		isUserAuethController,
 		docsController.deleteById)

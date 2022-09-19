@@ -27,13 +27,18 @@ export default{
 		})
 	
 	},
-	/*
-	update (id,list){
-		return axios().put(`list/${id}`,list)
+	deleteAssociation(id){
+	
+		return axios().delete(`/admin/docs-genres/${id}`)
+	
+	},
+	
+	update (id,data){
+		return axios().put(`/admin/docs/${id}`,data)
 	},
 	deleteOne (id){
-		return axios().delete(`list/${id}`)
-	},*/
+		return axios().delete(`admin/docs/${id}`)
+	},
 
 	deleteAll (){
 		return axios().delete(`/admin/docs`)

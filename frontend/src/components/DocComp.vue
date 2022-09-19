@@ -3,6 +3,7 @@
     <v-dialog
     v-model="dialog"
     width="500"
+    persistent
     >
     <template v-slot:activator="{ on, attrs }">
       <v-layout column>
@@ -144,7 +145,7 @@
           </div>
         </v-card-text>
       </v-card>
-      
+
       <v-card v-if="fatalError">
         <v-card-title>
           ERROR!

@@ -19,7 +19,9 @@ export default {
     chosenGenres:[],
     deletingAll: false,
     loading:false,
-    fetch: false
+    fetch: false,
+    editingDoc:false,
+    id:0
 
   }),
 
@@ -87,7 +89,6 @@ export default {
           this.docs=(await AdminService.getAllAsAdmin()).data
           
           await this.chosenGenres.map(chosenGenre=>{
-            console.log(this.docs[0].id,chosenGenre.id)
             AdminService.createAssociation(this.docs[0].id,chosenGenre.id)
           })
           this.addingDoc=false;
@@ -113,8 +114,6 @@ export default {
 
         } catch(e) {
           console.log('addGenre',e);
-          this.addingDoc=false;
-          this.dialog = false;
           this.fatalError="something went wrong...";
           this.dialog=true
         }
@@ -138,16 +137,86 @@ export default {
         }
       },
 
-      clear () {
-        this.$v.$reset()
-        this.title = ''
-        this.description = ''
-        this.imageAdress = ''
-        this.youtubeId = ''
-        this.chosenGenres=[]
+      async deleteOne(id){
+        try {
+          await AdminService.deleteOne(id)
+          this.docs=(await AdminService.getAllAsAdmin()).data
+        } catch(e) {
+          // statements
+          console.log('deleteOne',e);
+          this.fatalError=e.response.data.error;
+          this.dialog=true
+        }
       },
-    
 
+      setDoc(doc){
+        this.id=doc.id
+        this.title=doc.title
+        this.description=doc.description
+        this.imageAdress=doc.imageAdress
+        this.youtubeId=doc.youtubeId
+        doc.genres.map(genre=>this.chosenGenres.push(genre))
+      },
+
+      async edit(){
+        if(!this.$v.title.$invalid&&
+          !this.$v.description.$invalid&&
+          !this.$v.imageAdress.$invalid&&
+          !this.$v.youtubeId.$invalid&&
+          this.chosenGenres.length!=0){
+          try {
+            const data={
+              title: this.title,
+              description: this.description,
+              imageAdress: this.imageAdress,
+              youtubeId: this.youtubeId,
+            }
+
+            await AdminService.deleteAssociation(this.id)
+
+            await AdminService.update(this.id,data)
+
+            this.docs=(await AdminService.getAllAsAdmin()).data
+
+            await this.chosenGenres.map(chosenGenre=>{
+              console.log(chosenGenre.genre)
+              AdminService.createAssociation(this.id,chosenGenre.id)
+            })
+            this.editingDoc=false;
+            this.dialog = false;
+          } catch(e) {
+            // statements
+            console.log('edit',e);
+            this.editingDoc=false;
+            this.dialog = false;
+            this.fatalError=e.response.data.error;
+            this.dialog=true
+          }
+        }else{
+        this.addingDoc=false;
+        this.dialog = false;
+        this.fatalError='no empty or invalid forms'
+        this.dialog=true
+        }
+      
+    },
+
+      async clear () {
+                
+        try {
+          this.$v.$reset()
+          this.title = ''
+          this.description = ''
+          this.imageAdress = ''
+          this.youtubeId = ''
+          this.chosenGenres=[],
+          this.id=0
+        } catch (e) {
+          console.log(e)
+        
+        }
+        
+      },
   },
   
   /*watch: {
