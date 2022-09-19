@@ -1,14 +1,12 @@
-<script src="../scripts/AdminCompScript.js">
-</script>
-
 <template>
   <div class="text-center">
     <v-dialog
       v-model="dialog"
       width="60%"
+      persistent
     >
     <template v-slot:activator="{ on, attrs }">
-      <v-container>
+      <v-container v-if="isUserLoggedIn">
           <v-row>
             <v-col>
               <div 
@@ -34,7 +32,8 @@
               <v-btn 
               block
               class="mt-2 mr-2"
-              color="red">
+              color="red"
+              @click="deletingAll=true; dialog=true">
               <h4>Delete all</h4>
               </v-btn>
             </v-col>
@@ -204,7 +203,7 @@
 
           <v-btn
             text
-            @click="
+            @click="clear;
               addingDoc=false;
               dialog = false;"
           >
@@ -218,6 +217,68 @@
             Clear
           </v-btn>
         </v-card-actions>
+      </v-card>
+
+      <v-card v-if="deletingAll">
+        <v-card-title>
+          Deleting All Documentaries
+        </v-card-title>
+
+        <v-card-text>
+          <div>Are you sure?</div>
+        </v-card-text>
+
+        <v-divider></v-divider>
+
+        <v-card-actions>
+
+          <v-btn
+            text
+            @click="deleteAll"
+          >
+            Yes
+          </v-btn>
+
+          <v-btn
+            text
+            @click="
+              deletingAll=false;
+              dialog = false;"
+            >
+            Cancel
+          </v-btn>
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+      
+      <v-card v-if="loading && fetch">
+        <v-card-title>
+          Fetching All ...
+        </v-card-title>
+
+        <v-card-text>
+          <div>
+            <v-progress-circular
+            indeterminate
+            color="grey lighten-5">
+            </v-progress-circular>
+          </div>
+        </v-card-text>
+      </v-card>
+
+      <v-card v-if="loading && !fetch">
+        <v-card-title>
+          Deleting All ...
+        </v-card-title>
+
+        <v-card-text>
+          <div>
+            <v-progress-circular
+            indeterminate
+            color="grey lighten-5">
+            </v-progress-circular>
+          </div>
+        </v-card-text>
       </v-card>
 
       <v-card v-if="fatalError">
@@ -256,7 +317,10 @@
   </div>
 </template>
 
-<!-- Add "scoped" attribute to limit CSS to this component only
+<script src="../scripts/AdminCompScript.js">
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only-->
 <style scoped lang="stylus">
   
 </style>

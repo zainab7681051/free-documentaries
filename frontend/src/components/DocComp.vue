@@ -129,6 +129,22 @@
       </v-layout>
       </template>
       <!-- ERROR BOX -->
+
+      <v-card v-if="loading">
+        <v-card-title>
+          Fetching Documentaries...
+        </v-card-title>
+
+        <v-card-text>
+          <div>
+            <v-progress-circular
+            indeterminate
+            color="grey lighten-5">
+            </v-progress-circular>
+          </div>
+        </v-card-text>
+      </v-card>
+      
       <v-card v-if="fatalError">
         <v-card-title>
           ERROR!

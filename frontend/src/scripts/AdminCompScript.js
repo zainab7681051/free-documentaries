@@ -16,7 +16,10 @@ export default {
     imageAdress: '',
     youtubeId: '',
     genres: {},
-    chosenGenres:[]
+    chosenGenres:[],
+    deletingAll: false,
+    loading:false,
+    fetch: false
 
   }),
 
@@ -65,21 +68,6 @@ export default {
         return errors
       }
   },
-
-  async mounted(){      
-    try {
-      this.docs=(await AdminService.getAllAsAdmin()).data
-      this.genres=(await AdminService.getGenresAsAdmin()).data
-      console.log("DOCS",this.docs)
-      console.log("GENRES",this.genres)
-      console.log(this.docs[0].id)
-      
-    } catch (e) {
-      this.fatalError=e.response.data.error;
-      this.dialog=true
-    }
-    
-  },  
   
   methods:{
     async add(){
@@ -97,14 +85,15 @@ export default {
           }
           await AdminService.add(data)
           this.docs=(await AdminService.getAllAsAdmin()).data
-          console.log(this.docs[0].id,chosenGenre.id)
+          
           await this.chosenGenres.map(chosenGenre=>{
+            console.log(this.docs[0].id,chosenGenre.id)
             AdminService.createAssociation(this.docs[0].id,chosenGenre.id)
           })
           this.addingDoc=false;
           this.dialog = false;
         } catch(e) {
-          console.log(e);
+          console.log('add',e);
           this.addingDoc=false;
           this.dialog = false;
           this.fatalError=e.response.data.error;
@@ -123,11 +112,29 @@ export default {
           await this.chosenGenres.push(genre)
 
         } catch(e) {
-          console.log(e);
+          console.log('addGenre',e);
           this.addingDoc=false;
           this.dialog = false;
           this.fatalError="something went wrong...";
           this.dialog=true
+        }
+      },
+
+      async deleteAll(){
+        try {
+          this.deletingAll=false;
+          this.loading=true
+          const x=await AdminService.deleteAll()
+          this.docs={}
+        } catch(e) {
+          // statements
+          console.log('deleteAll',e.response);
+          this.loading=false;
+          this.fatalError=e.response.data.error;
+          this.dialog=true
+        } finally {
+          this.loading=false
+          if(!this.fatalError){this.dialog = false;}
         }
       },
 
@@ -143,7 +150,7 @@ export default {
 
   },
   
-  watch: {
+  /*watch: {
     '$route.query.search': {
       immediate: true,
       async handler (value) {
@@ -157,7 +164,28 @@ export default {
       }
     }
   },
+*/
 
+  async mounted(){      
+    try {
+      this.fatalError=''
+      this.fetch=true
+      this.loading=true
+      this.dialog=true
+      this.genres=(await AdminService.getGenresAsAdmin()).data
+      this.docs=(await AdminService.getAllAsAdmin()).data
+      
+    } catch (e) {
+      this.loading=false
+      this.fetch=false
+      this.fatalError=e.response.data.error;
+    } finally {
+      this.loading=false
+      this.fetch=false
+      if(!this.fatalError){this.dialog = false;}
+    }
+    
+  },  
   props: {
   }
 }

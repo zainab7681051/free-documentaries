@@ -23,10 +23,7 @@ export default {
       this.$store
       .dispatch('setUser', null)
 
-      this.$router
-      .push({
-        name: 'welcome'
-      })
+      this.$router.push('/docs')
 
     }
   },

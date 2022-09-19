@@ -12,24 +12,31 @@ export default {
     title:'',
     docs:{},
     download:false,
-    dialog2:false
+    dialog2:false,
+    loading:false
   }),
 
 
   async mounted(){      
     try {
+      this.fatalError=''
+      this.loading=true
+      this.dialog=true
       this.docs=(await DocsService.getAll()).data
       // console.log("DOCS",this.docs)
       
     } catch (e) {
+      this.loading=false
       this.fatalError=e.response.data.error;
-      this.dialog=true
+    } finally {
+      this.loading=false
+      if(!this.fatalError){this.dialog = false;}
     }
     
   },  
   
   methods: {
-      async watch (youtubeId,title) {
+       watch (youtubeId,title) {
         try {
           this.youtubeId=youtubeId
           this.title=title

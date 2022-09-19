@@ -51,13 +51,16 @@ module.exports={
 						model:Genres
 					}]
 				})
-				if(docs[0]){
-					res.status(200).send(docs)
-				}else{
-					res.status(400).send({
-					error:'No documentaries...sorry...'
-				})
-			}
+					if(docs.length!=0){
+						res.status(200).send(docs)
+					}else{
+						console.log({
+						error:'No documentaries...sorry...'
+					})
+						return res.status(400).send({
+						error:'No documentaries...'
+					})
+				}
 			}
 		} catch(e) {
 			console.log(e)
@@ -110,7 +113,7 @@ module.exports={
 			return res.status(200).send(genres)
 		} catch(e) {
 			console.log(e);
-			res.status(500).send({
+			res.status(400).send({
 				error: 'cannot get genres :('
 			})
 		}
@@ -219,18 +222,17 @@ module.exports={
 
 	async deleteAll(req,res){
 		try {
-			const docs=await Docs.findAll()
-			if(docs[0]){
+			const docs=await Docs.findAll({
+				limit: 9
+			})
+			if(docs.length!=0){
 				docs.forEach( async function(element, index) {
-				console.log(index,element)
 				await element.destroy()
 				});
-				return res.status(200).send({
-					message:'docs were deleted successfuly'
-				})
+				return res.status(200).send()
 			}else{
 				 return res.status(400).send({
-				error:'No documentaries to delete'
+				error:'No docs to delete :('
 			})
 			}
 		} catch(e) {
