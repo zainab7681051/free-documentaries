@@ -5,7 +5,7 @@ user can watch free YouTube documentaries embedded inside the page and download 
 
 Admin user can add, edit, delete documentaries, and the admin page is protected from unauthorised user access.
 
-![caption](https://github.com/zainab7681051/free-documentaries/screenshot/free-documentaries.gif)
+![caption](screenshot/free-documentaries.gif)
 # 
 # tools & frameworks
 the following `stack` of tools and frameworks were used in this project
