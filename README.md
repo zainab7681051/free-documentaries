@@ -4,6 +4,8 @@ PEVN stack web app, frontended in vue and backended in nodejs express and databa
 user can watch free YouTube documentaries embedded inside the page and download the documentaries.
 
 Admin user can add, edit, delete documentaries, and the admin page is protected from unauthorised user access.
+
+![caption](https://github.com/zainab7681051/free-documentaries/screenshot/free-documentaries.gif)
 # 
 # tools & frameworks
 the following `stack` of tools and frameworks were used in this project
