@@ -1,54 +1,60 @@
-import {mapState} from 'vuex'
+import {
+	mapState
+} from 'vuex'
 import _ from 'lodash'
 
 export default {
-  name: 'header-comp',
-  
-  data: () => ({
-    drawer:null,
-    search:''
-  }),
+	name: 'header-comp',
 
-  computed: {
-    ...mapState([
+	data: () => ({
+		drawer: null,
+		search: ''
+	}),
+
+	computed: {
+		...mapState([
       'isUserLoggedIn',
       'user'
     ])
-  },
-  methods:{
-    logout(){
-      this.$store
-      .dispatch('setToken', null)
-      
-      this.$store
-      .dispatch('setUser', null)
+	},
+	methods: {
+		logout() {
+			this.$store
+				.dispatch('setToken', null)
 
-      this.$router.push('/docs')
+			this.$store
+				.dispatch('setUser', null)
 
-    }
-  },
+			this.$router.push('/docs')
 
-  watch: {
-    search: _.debounce( function(value) {
-      const route = {
-        name: 'docs'
-      }
-      if (this.search !== '') {
-        route.query = {
-          search: this.search
-        }
-      }
-      this.$router.push(route)
-    }, 800),
-    '$route.query.search': {
-      immediate: true,
-      handler (value) {
-        this.search = value
-      }
-    }
-  },
+		},
+		redirection() {
+			this.$route.path != '/docs' ?
+				this.$router.push('/docs') : window.location.reload(true);
+		}
+	},
 
-  props: {
-    msg: String
-  }
+	watch: {
+		search: _.debounce(function (value) {
+			const route = {
+				name: 'docs'
+			}
+			if (this.search !== '') {
+				route.query = {
+					search: this.search
+				}
+			}
+			this.$router.push(route)
+		}, 800),
+		'$route.query.search': {
+			immediate: true,
+			handler(value) {
+				this.search = value
+			}
+		}
+	},
+
+	props: {
+		msg: String
+	}
 }

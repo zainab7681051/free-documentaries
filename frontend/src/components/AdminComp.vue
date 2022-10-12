@@ -409,7 +409,7 @@
 
         <v-card-actions>
 
-          <v-btn v-if="!isUserLoggedIn"
+          <v-btn v-if="fatalError=='you do not have access to this resource'"
             text
             @click="
               dialog = false; 
@@ -417,13 +417,6 @@
               $router.push('/admin-login')"
           >
             Login
-          </v-btn>
-
-          <v-btn v-if="isUserLoggedIn"
-            text
-            @click="dialog = false; fatalError=''"
-          >
-            Cancel
           </v-btn>
 
         </v-card-actions>

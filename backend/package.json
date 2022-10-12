@@ -1,15 +1,15 @@
 {
-  "name": "backend",
+  "name": "free-documentaries-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "nodejs express API to get/post/put/delete with postgres database",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon ./src/index.js",
     "index": "node ./src/index.js",
     "seed": "node ./seed/index.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["Javascript, full stack, Nodejs, expressjs, postgres, sequelize, jwt, documentaries, entertainment, authentication, validation"],
+  "author": "zainab7681051",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",

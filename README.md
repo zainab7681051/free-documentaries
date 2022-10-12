@@ -3,12 +3,12 @@ PEVN stack web app, frontended in vue and backended in nodejs express and databa
 # 
 user can watch free YouTube documentaries embedded inside the page and download the documentaries.
 
-Admin user can add, edit, delete documentaries, and the admin page is protected from unauthorised user access.
+Admin user can add, edit, delete documentaries. the admin page is protected from unauthorised user access.
 # 
 # tools & frameworks
 the following `stack` of tools and frameworks were used in this project
 * database:
-  * postgres, object-relational database with associated tables(docs table, genres table, joint docs_genres table) 
+  * postgres, object-relational database with association tables(docs table, genres table, joint docs_genres table) 
 
 * backend:
    * nodejs express for the web server
@@ -46,4 +46,4 @@ then, to run it, type
 ```
 vue serve
 ```
-and click or copy the pagelink in the vue CLI prompt/git window and head towards the browser to see the app.
+finally, click or copy the pagelink in the vue CLI prompt/git window and head towards the browser to see the app.

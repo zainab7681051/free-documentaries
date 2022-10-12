@@ -102,7 +102,6 @@
             <v-list-item-title>Admin Dashboard</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-      </v-list>
 
         <v-list-item
         v-if="isUserLoggedIn"
@@ -116,21 +115,9 @@
             <v-list-item-title>Logout</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
 
-   <v-app-bar app>
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-
-      <v-toolbar-title
-              @click="$router.push('/docs')"
-              class="display-1"
-              style="cursor:pointer">FREE DOCS</v-toolbar-title>
-      <v-spacer/>
-      <v-toolbar-items>
-        <v-row  
-        align="center"
-        style="max-width: 650px"
+        <v-list-item
+        class="d-flex d-sm-none"
         >
           <v-text-field
             :append-icon-cb="() => {}"
@@ -140,12 +127,51 @@
             append-icon="mdi-magnify"
             color="white"
             hide-details
-            class="mr-4"
+            class="mr-4 mt-6"
+          ></v-text-field>
+        </v-list-item>
+
+        <v-list-item
+        class="d-flex d-sm-none"
+        ><v-switch
+        v-model="$vuetify.theme.dark"
+        label="change theme"
+        class="mt-6"
+        color="#ab92b3"
+        >
+        </v-switch>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+
+   <v-app-bar app>
+      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+<!-- -->
+      <v-toolbar-title
+              @click="redirection()"
+              class="display-1"
+              style="cursor:pointer"
+              >FREE DOCS</v-toolbar-title>
+      <v-spacer/>
+      <v-toolbar-items>
+        <v-row  
+        style="max-width: 650px"
+        class="d-none d-sm-flex"
+        >
+          <v-text-field
+            :append-icon-cb="() => {}"
+            v-model="search"
+            placeholder="Search..."
+            single-line
+            append-icon="mdi-magnify"
+            color="white"
+            hide-details
+            class="mr-4 mt-6"
           ></v-text-field>
         <v-switch
         v-model="$vuetify.theme.dark"
         label="change theme"
-        class="mt-4"
+        class="mt-6"
         color="#ab92b3"
         >
         </v-switch>
