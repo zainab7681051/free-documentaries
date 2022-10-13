@@ -5,6 +5,7 @@
     width="500"
     persistent
     >
+    
     <template v-slot:activator="{ on, attrs }">
       <v-layout column>
         <v-layout>
@@ -32,9 +33,10 @@
                             <v-flex xs12 sm12>
                             <v-img
                             class="mt-4"
+                            width="100%"
                             aspect-ratio="2"
                             contain
-                            :src="doc.imageAdress"
+                            :src ="doc.imageAdress"
                             >
                             <template v-slot:placeholder>
                               <v-row
@@ -53,8 +55,36 @@
 
                               <v-flex xs12 sm12 lg4>
                                 <div
-                                class="ml-2 mt-10 mb-2">
+                                class="ml-2 mt-10 mb-2 text-md lg:text-xl">
                                   {{doc.title}}
+                                </div>
+                              </v-flex>
+
+                              <v-flex xs12 sm12 lg4>
+                                <div
+                                class="ml-2 mt-5 mb-2 px-2
+                                ">
+                                <v-btn class="mt-2 mb-2 ml-2 mr-2
+                                px-0.5 py-0.5 text-sm
+                                sm:px-2 sm:py-1 md:px-3 md:py-1.5
+                                lg:px-4 lg:py-2
+                                md:text-md"
+                                @click="expandDesc.bool=!expandDesc.bool;
+                                expandDesc.id=doc.id">Description</v-btn >
+                                <v-expand-transition>
+                                  <v-card
+                                    v-show="expandDesc.bool&&expandDesc.id==doc.id"
+                                    height="100%"
+                                    width="100%"
+                                    class="mx-auto"
+                                    style="border:1.5px solid #ab92b3;">
+                                  <v-card-text
+                                  class="text-body-2 text-sm-body-1
+                                    text-md-h5 text-left text-lg-h3 text--seconday">
+                                    <p class="font-weight-bold">Description:</p> {{doc.description}}
+                                  </v-card-text>
+                                  </v-card>
+                                </v-expand-transition>
                                 </div>
                               </v-flex>
                               
@@ -62,7 +92,11 @@
                                 <div> Tags: 
                                 <v-btn
                                 v-for="genre in doc.genres"
-                                class="mt-2 mb-2 ml-2 mr-2"
+                                class="mt-2 mb-2 ml-2 mr-2
+                                px-0.5 py-0.5 text-sm
+                                sm:px-2 sm:py-1 md:px-3 md:py-1.5
+                                lg:px-4 lg:py-2
+                                md:text-md" 
                                 :key="genre.id"
                                 small
                                 @click="getByGenres(genre)">
@@ -74,7 +108,7 @@
                               <v-flex sm12 xs12 lg4>
                                 <v-btn
                                 color="primary"
-                                class="mt-2"
+                                class="block mt-2 mr-2 w-full px-1 py-0.5 md:px-5 md:py-2 lg:px-7 lg:py-4 text-800 hover:text-white hover:bg-blue-500"
                                 @click="watch(doc.youtubeId,doc.title)"
                                 >
                                   Watch
@@ -82,7 +116,7 @@
 
                                 <v-btn
                                 color="error"
-                                class="ml-4 mt-2"
+                                class="block mt-2 ml-2 w-full px-1 py-0.5 lg:px-7 lg:py-4 text-800 hover:text-white hover:bg-red-500"
                                 :to="{
                                     name: 'download', 
                                     params:{

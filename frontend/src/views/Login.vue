@@ -37,20 +37,6 @@
                         @input="$v.password.$touch()"
                         @blur="$v.password.$touch()"
                       ></v-text-field>
-                      <v-checkbox
-                        v-model="checkbox"
-                        label="Stay Logged in?"
-                        @click="checkbox=true"
-                      ></v-checkbox>
-
-                      <v-btn
-                      to="/admin-register"
-                      text
-                      plain
-                      color="#fd6767"
-                      class="mb-2">
-                        Not registered? SignUp!
-                      </v-btn>
                       <br>
                       <v-btn
                         class="mr-4 ml-4 mb-2"

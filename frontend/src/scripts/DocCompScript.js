@@ -15,7 +15,11 @@ export default {
 		docs: {},
 		download: false,
 		dialog2: false,
-		loading: false
+		loading: false,
+		expandDesc: {
+			bool: false,
+			id: null
+		}
 	}),
 
 	computed: {

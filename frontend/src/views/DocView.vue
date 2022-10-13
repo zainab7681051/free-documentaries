@@ -1,7 +1,8 @@
 <template>
   <v-app>
     <v-main>
-    	<main-comp msg="FREE DOCUMENTARIES FROM YOUTUBE" />
+    	
+      <main-comp msg="FREE DOCUMENTARIES FETCHED FROM YOUTUBE" />
     </v-main>
   </v-app>
 </template>

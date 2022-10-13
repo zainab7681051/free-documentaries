@@ -5,7 +5,8 @@
     <v-flex xs12>
       <v-card>
         <v-card-title
-        style="background-color:#ab92b3;">
+        style="background-color:#ab92b3;"
+        class="text-center">
           {{msg}}
         </v-card-title>
           <edit-prof-comp v-if="msg=='EDIT YOUR PROFILE' && isUserLoggedIn"/> 
@@ -16,7 +17,7 @@
           
           <download-comp v-if="msg=='DOWNLOAD'"/>
           
-          <doc-comp v-if="msg=='FREE DOCUMENTARIES FROM YOUTUBE'"/> 
+          <doc-comp v-if="msg=='FREE DOCUMENTARIES FETCHED FROM YOUTUBE'"/> 
           
         </v-card>
     </v-flex><!-- 
