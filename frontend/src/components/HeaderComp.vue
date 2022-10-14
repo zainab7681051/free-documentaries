@@ -8,6 +8,7 @@
       <v-sheet
         class="pa-4"
         color="#ab92b3"
+        v-if="isUserLoggedIn"
       >
          <v-avatar
             class="mb-4"
@@ -18,7 +19,7 @@
         </v-img>
         </v-avatar>
 
-          <div v-if="isUserLoggedIn">
+          <div>
             <p style="font-size:x-large;">
             {{user.name}}</p>
             <p>{{user.email}}</p>
@@ -186,5 +187,7 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="stylus">
-  
+.v-list .v-list-item:hover{
+color:#ab92b3
+}
 </style>

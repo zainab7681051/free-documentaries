@@ -3,9 +3,9 @@
   <v-layout>
     <v-container>
     <v-flex xs12>
-      <v-card style="border:3px solid #ab92b3;">
+      <v-card style="border:3px solid #ab92b3;" align="center">
         <v-card-text>
-          CONTACT US COMPONENT
+          CONTACT US COMPONENT IS EMPTY
         </v-card-text>
       </v-card>
     </v-flex>

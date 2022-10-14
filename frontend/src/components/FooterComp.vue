@@ -1,11 +1,10 @@
 <template>
-    <v-footer
-      
+    <v-footer 
     >
     <v-container>
     <v-card>
     <v-row>
-      <v-col cols="12" md="4"
+      <v-col cols="12" sm="6" md="4"
       lg="3">
         <v-card
           flat
@@ -19,12 +18,12 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6c-3.3.3-5.6-1.3-5.6-3.6c0-2 2.3-3.6 5.2-3.6c3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9c2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9c.3 2 2.9 3.3 5.9 2.6c2.9-.7 4.9-2.6 4.6-4.6c-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2c12.8 2.3 17.3-5.6 17.3-12.1c0-6.2-.3-40.4-.3-61.4c0 0-70 15-84.7-29.8c0 0-11.4-29.1-27.8-36.6c0 0-22.9-15.7 1.6-15.4c0 0 24.9 2 38.6 25.8c21.9 38.6 58.6 27.5 72.9 20.9c2.3-16 8.8-27.1 16-33.7c-55.9-6.2-112.3-14.3-112.3-110.5c0-27.5 7.6-41.3 23.6-58.9c-2.6-6.5-11.1-33.3 2.6-67.9c20.9-6.5 69 27 69 27c20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27c13.7 34.7 5.2 61.4 2.6 67.9c16 17.7 25.8 31.5 25.8 58.9c0 96.5-58.9 104.2-114.8 110.5c9.2 7.9 17 22.9 17 46.4c0 33.7-.3 75.4-.3 83.6c0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252C496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2c1.6 1.6 3.9 2.3 5.2 1c1.3-1 1-3.3-.7-5.2c-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9c1.6 1 3.6.7 4.3-.7c.7-1.3-.3-2.9-2.3-3.9c-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2c2.3 2.3 5.2 2.6 6.5 1c1.3-1.3.7-4.3-1.3-6.2c-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9c1.6 2.3 4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2c-1.4-2.3-4-3.3-5.6-2z"/>
             </svg>
           </v-btn>
-          edit this project on Github
+          Github
         </v-card-subtitle>
         </v-card>
       </v-col>
 
-      <v-col cols="12" md="4"
+      <v-col cols="12" sm="6" md="4"
       lg="3">
       <v-card 
         flat
@@ -40,7 +39,7 @@
       </v-card>
       </v-col>
 
-      <v-col cols="12" md="4"
+      <v-col cols="12" sm="6" md="4"
       lg="3">
         <v-card
           flat
@@ -55,7 +54,7 @@
       </v-card>
       </v-col>
       
-      <v-col cols="12" md="4"
+      <v-col cols="12" sm="6" md="4"
       lg="3">
         <v-card
           flat
@@ -70,7 +69,7 @@
       </v-card>
       </v-col>
 
-        <v-card-text class="text-center">
+        <v-card-text class="text-center text--secondary">
           {{ new Date().getFullYear() }} — 
           <strong>made with
             <v-btn icon
@@ -78,11 +77,10 @@
             target="_blank">
               <svg xmlns="http://www.w3.org/2000/svg" width="1.70em" height="1.70em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 221"><path fill="#41B883" d="M204.8 0H256L128 220.8L0 0h97.92L128 51.2L157.44 0h47.36Z"/><path fill="#41B883" d="m0 0l128 220.8L256 0h-51.2L128 132.48L50.56 0H0Z"/><path fill="#35495E" d="M50.56 0L128 133.12L204.8 0h-47.36L128 51.2L97.92 0H50.56Z"/></svg>
             </v-btn>
-            ,<v-btn icon
+            and<v-btn icon
             href="https://vuetifyjs.com/en/"
             target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="1.70em" height="1.70em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 222"><path fill="#1697F6" d="m130.711 49.564l-51.043 88.428L128 221.754l64.015-110.877L256 0h-96.692z"/><path fill="#AEDDFF" d="m64.015 110.877l3.352 5.831l47.748-82.742L134.734 0H0z"/><path fill="#1867C0" d="M159.308 0C183.503 79.623 128 221.754 128 221.754l-48.332-83.762L159.308 0Z"/><path fill="#7BC6FF" d="M134.734 0C32.794 0 67.367 116.708 67.367 116.708L134.734 0Z"/></svg>
-            </v-btn>&nbsp and &nbsp
-            <v-btn icon disabled><svg xmlns="http://www.w3.org/2000/svg" width="1.70em" height="1.70em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><path fill="#b20000" fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15C-7.534 4.736 3.562-3.248 8 1.314z"/></svg>
+            </v-btn>&nbspby<v-btn class="v"tile text href="">Zainab</v-btn>
             </v-btn> 
           </strong>
         </v-card-text>
@@ -102,5 +100,7 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="stylus">
-  
+.v-btn:hover{
+color:#ab92b3
+}
 </style>

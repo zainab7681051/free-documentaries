@@ -7,8 +7,6 @@
     >
     
     <template v-slot:activator="{ on, attrs }">
-      <v-layout column>
-        <v-layout>
           <v-container>
             <template>
               <div
@@ -18,19 +16,17 @@
                 width="600"
                 height="300">
                   <template v-slot:activator="{on, attrs}">                  
-                    <v-flex xs12 sm12>
+                    <v-row>
+                	<v-col cols="12">
                       <v-card 
                       v-for="doc in docs"
                       class="mt-2 mb-2"
                       :key="doc.id"
                       block
-                      width="75%"
+                      width="70%"
                       style="border:3px solid #ab92b3;">
-                        <!-- <v-row>
-                          <v-col> --><!-- 
-                            <v-layout 
-                            > -->
-                            <v-flex xs12 sm12>
+                      <v-row>              
+                            <v-col cols="12" md="6" lg="4">
                             <v-img
                             class="mt-4"
                             width="100%"
@@ -51,16 +47,16 @@
                               </v-row>
                             </template>
                             </v-img>
-                          </v-flex>
+                          </v-col>
 
-                              <v-flex xs12 sm12 lg4>
+                              <v-col cols="12" md="6" lg="4">
                                 <div
                                 class="ml-2 mt-10 mb-2 text-md lg:text-xl">
                                   {{doc.title}}
                                 </div>
-                              </v-flex>
+                              </v-col>
 
-                              <v-flex xs12 sm12 lg4>
+                              <v-col cols="12" md="6" lg="4">
                                 <div
                                 class="ml-2 mt-5 mb-2 px-2
                                 ">
@@ -86,9 +82,9 @@
                                   </v-card>
                                 </v-expand-transition>
                                 </div>
-                              </v-flex>
+                              </v-col>
                               
-                              <v-flex xs12 sm12 lg4>
+                              <v-col cols="12" md="6" lg="4">
                                 <div> Tags: 
                                 <v-btn
                                 v-for="genre in doc.genres"
@@ -103,9 +99,9 @@
                                 {{genre.genre}}
                                 </v-btn>
                                 </div>
-                              </v-flex>
+                              </v-col>
 
-                              <v-flex sm12 xs12 lg4>
+                              <v-col cols="12" md="6" lg="4">
                                 <v-btn
                                 color="primary"
                                 class="block mt-2 mr-2 w-full px-1 py-0.5 md:px-5 md:py-2 lg:px-7 lg:py-4 text-800 hover:text-white hover:bg-blue-500"
@@ -126,15 +122,12 @@
                                   Download
                                   <!-- @click="download=true; dialog2=true" -->
                                 </v-btn>
-                              </v-flex><!-- 
-                            </v-layout> -->
-                          <!-- </v-col> -->
-
-                          <!-- </v-col>
-                        </v-row> -->
+                              </v-col>
+                          </v-row>
                         <br>
                       </v-card>
-                    </v-flex>
+                    </v-col>
+	                </v-row>
                   </template>
                   <!-- youtube player box -->
                   <v-card v-if="player">
@@ -166,8 +159,6 @@
               </div>
             </template>
           </v-container>
-        </v-layout>
-      </v-layout>
       </template>
       <!-- ERROR BOX -->
 
