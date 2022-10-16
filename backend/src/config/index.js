@@ -1,17 +1,18 @@
-module.exports={
-	port:process.env.PORT || 1000,
-	db:{
-		database: process.env.DB_NAME || "freedocs",
-		user: process.env.DB_USER || "zainab",
-		password:process.env.PASSWORD || "1234",
-		options:{
-			dialect: process.env.DIALECT || "postgres",
+const dotenv = require("dotenv")
+dotenv.config()
+module.exports = {
+	port: process.env.PORT,
+	db: {
+		database: process.env.DB_NAME,
+		user: process.env.DB_USER,
+		password: process.env.DB_PASSWORD,
+		options: {
+			dialect: "postgres",
 			host: process.env.HOST || "localhost",
-			
+
 		}
 	},
-	authentication:{
-		jwtSecret: process.env.JWT_SECRET || 'secret'
-
+	authentication: {
+		jwtSecret: process.env.JWT_SECRET
 	}
 }

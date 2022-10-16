@@ -157,3 +157,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+.nyc_output
+coverage
+build/
