@@ -5,8 +5,7 @@
   "main": "index.js",
   "private": "true",
   "scripts": {
-    "dev": "nodemon ./src/index.js",
-    "index": "node ./src/index.js",
+    "index": "concurrently \"npm run build\" \"npm run serve\"",
     "seed": "node ./seed/index.js",
     "prebuild": "babel ./src --out-dir build",
     "build": "node ./build/index.js",
@@ -28,6 +27,7 @@
     "bcrypt": "^5.0.1",
     "bcrypt-nodejs": "^0.0.3",
     "bluebird": "^3.7.2",
+    "concurrently": "^7.4.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.1",
