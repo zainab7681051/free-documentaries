@@ -62,8 +62,8 @@ sequelize.sync({
 
 
 		} catch (e) {
-			console.log("ERROR!", e)
-			console.log("ERROR!", e)
+			console.log("ERROR SEED!", e)
+			console.log("ERROR SEED!", e)
 			console.log("ERROR!", e)
 		}
 
