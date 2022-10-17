@@ -6,27 +6,27 @@ const config =require('../config')
 const bcrypt=require('bcrypt')
 const Op = db.SEQUELIZE.Op;
 
-function jwtSignUser(user){
-const ONE_WEEK=60*60*24*7
-return jwt.sign(user, config.authentication.jwtSecret,{
-	expiresIn: ONE_WEEK
-})
+function jwtSignUser(user) {
+	const ONE_WEEK = 60 * 60 * 24 * 7
+	return jwt.sign(user, config.authentication.jwtSecret, {
+		expiresIn: ONE_WEEK
+	})
 }
 
 module.exports={
 	
 	async register(req,res){
-		try{
-			  const salt = await bcrypt.genSalt(10);
-			  var data = {
-			  	name: req.body.name,
-			  	email : req.body.email,
-			    password : await bcrypt.hash(req.body.password, salt)
-			  };
+		try {
+			const salt = await bcrypt.genSalt(10);
+			var data = {
+				name: req.body.name,
+				email: req.body.email,
+				password: await bcrypt.hash(req.body.password, salt)
+			};
 
-			const user=await User.create(data)
-			const userjson=user.toJSON()
-			const jwtsu=jwtSignUser(userjson) 
+			const user = await User.create(data)
+			const userjson = user.toJSON()
+			const jwtsu = jwtSignUser(userjson)
 			
 			res.status(200).send({
 				message:'registered successfully!',
