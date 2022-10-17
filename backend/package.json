@@ -3,14 +3,14 @@
   "version": "1.0.0",
   "description": "nodejs express API to get/post/put/delete with postgres database",
   "main": "index.js",
+  "private": "true",
   "scripts": {
     "dev": "nodemon ./src/index.js",
     "index": "node ./src/index.js",
     "seed": "node ./seed/index.js",
     "prebuild": "babel ./src --out-dir build",
     "build": "node ./build/index.js",
-    "serve": "nodemon --exec babel-node ./src/index.js",
-    "test": "nyc --reporter=html --reporter=text --reporter=lcov mocha -r @babel/register"
+    "serve": "nodemon --exec babel-node ./src/index.js"
   },
   "keywords": [
     "Javascript, full stack, Nodejs, expressjs, postgres, sequelize, jwt, documentaries, entertainment, authentication, validation"
@@ -18,10 +18,18 @@
   "author": "zainab7681051",
   "license": "ISC",
   "dependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.19.3",
+    "@babel/node": "^7.19.1",
+    "@babel/plugin-transform-runtime": "^7.19.1",
+    "@babel/preset-env": "^7.19.4",
+    "@babel/register": "^7.18.9",
+    "@babel/runtime": "^7.19.4",
     "bcrypt": "^5.0.1",
     "bcrypt-nodejs": "^0.0.3",
     "bluebird": "^3.7.2",
     "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "express": "^4.18.1",
     "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
