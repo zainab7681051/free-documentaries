@@ -20,7 +20,9 @@ const docs_genres = require('./docs_genres.js')
     }
 )
 */
-const sequelize = new SEQUELIZE(process.env.DB_URL)
+const sequelize = new SEQUELIZE(process.env.DB_URL, {
+	dialects: 'postgres'
+})
 sequelize
 	.authenticate()
 	.then(() => {
