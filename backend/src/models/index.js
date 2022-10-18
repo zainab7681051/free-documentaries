@@ -5,24 +5,26 @@ const docs = require("./docs.js")
 const genres = require('./genres.js')
 const docs_genres = require('./docs_genres.js')
 
-/*const sequelize=new SEQUELIZE(
+console.log('models models models')
+console.log('models models models')
+
+const sequelize = new SEQUELIZE(
 	config.db.database,
 	config.db.user,
 	config.db.password,
 	config.db.options,
-    {
-      pool: {
-        max: 5,
-        min: 0,
-        acquire: 30000,
-        idle: 10000
-      }
-    }
+	{
+		pool: {
+			max: 5,
+			min: 0,
+			acquire: 30000,
+			idle: 10000
+		}
+	}
 )
-*/
 
-console.log('models models models')
-const sequelize = new SEQUELIZE(process.env.DB_URL, {})
+
+//const sequelize = new SEQUELIZE(process.env.DB_URL, {})
 sequelize
 	.authenticate()
 	.then(() => {
