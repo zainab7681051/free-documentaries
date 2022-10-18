@@ -1,16 +1,18 @@
 import axios from './axios.js'
 
-export default{
+export default {
 
-	getAll (search){
-		return axios().get('docs',{
-			params:{
-				search:search
-			}
-		})
+	getAll(search) {
+		return axios()
+			.get('/docs', {
+				params: {
+					search: search
+				}
+			})
 	},
 
-	getAllFromGenre(id){
-		return axios().get(`docs/${id}`)
+	getAllFromGenre(id) {
+		return axios()
+			.get(`/docs/${id}`)
 	},
 }
