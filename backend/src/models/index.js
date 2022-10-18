@@ -20,11 +20,16 @@ const docs_genres = require('./docs_genres.js')
     }
 )
 */
-const sequelize = new SEQUELIZE(process.env.DB_URL
-  /*, {
-    dialect: "postgres",
-  }*/
-)
+
+console.log('models models models')
+const sequelize = new SEQUELIZE(process.env.DB_URL, {
+	pool: {
+		max: 5,
+		min: 0,
+		acquire: 30000,
+		idle: 10000
+	}
+})
 sequelize
 	.authenticate()
 	.then(() => {
