@@ -5,9 +5,6 @@ const docs = require("./docs.js")
 const genres = require('./genres.js')
 const docs_genres = require('./docs_genres.js')
 
-console.log('models models models')
-console.log('models models models')
-
 const sequelize = new SEQUELIZE(
 	config.db.database,
 	config.db.user,
@@ -24,7 +21,6 @@ const sequelize = new SEQUELIZE(
 )
 
 
-//const sequelize = new SEQUELIZE(process.env.DB_URL, {})
 sequelize
 	.authenticate()
 	.then(() => {
@@ -42,7 +38,6 @@ db.docs = (docs)(sequelize, SEQUELIZE);
 db.genres = (genres)(sequelize, SEQUELIZE);
 db.docs_genres = (docs_genres)(sequelize, SEQUELIZE);
 
-//TODO==>M:M ASSOCIATION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 db.docs.belongsToMany(db.genres, {
 	through: db.docs_genres
 })
