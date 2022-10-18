@@ -22,7 +22,7 @@ const docs_genres = require('./docs_genres.js')
 */
 
 console.log('models models models')
-const sequelize = new SEQUELIZE(process.env.DB_URL, {
+const sequelize = new SEQUELIZE(process.env.DB_URL, {}, {
 	pool: {
 		max: 5,
 		min: 0,
