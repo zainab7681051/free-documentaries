@@ -10,15 +10,6 @@
         color="#ab92b3"
         v-if="isUserLoggedIn"
       >
-         <v-avatar
-            class="mb-4"
-            size="64">
-          <v-img
-          v-if="isUserLoggedIn"
-          src='../assets/logo.png'>
-        </v-img>
-        </v-avatar>
-
           <div>
             <p style="font-size:x-large;">
             {{user.name}}</p>
