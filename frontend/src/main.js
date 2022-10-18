@@ -9,7 +9,7 @@ import {
 	sync
 } from 'vuex-router-sync'
 
-Vue.config.productionTip = false
+Vue.config.productionTip = true
 
 sync(store, router)
 

@@ -28,6 +28,6 @@ sequelize.sync({
 	.then(() => {
 		console.log(`resync`)
 		app.listen(config.port)
-		console.log(`server running on http://localhost:${config.port}`)
+		console.log(`server running on port:${config.port}`)
 
 	});
