@@ -9,7 +9,7 @@ const config = require('./config')
 
 const app = express();
 let corsOption = {
-	origin: "https://free-documentaries.onrender.com"
+	origin: "https://free-documentaries.onrender.com/"
 }
 
 app.use(cors(corsOption))
