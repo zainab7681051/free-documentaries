@@ -9,10 +9,10 @@ const config = require('./config')
 
 const app = express();
 let corsOption = {
-	origin: "http://localhost:8081"
+	origin: "https://free-documentaries.onrender.com"
 }
 
-app.use(cors())
+app.use(cors(corsOption))
 app.use(morgan("combined"))
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({
