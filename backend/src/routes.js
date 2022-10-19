@@ -55,9 +55,7 @@ module.exports = (app) => {
 
 	/*HEALTH CHECK*/
 	app.get('/check', (req, res) => {
-		res.status(200)
-			.send({
-				message: 'health check passed'
-			})
+		return res.status(200)
+			.send()
 	})
 }
