@@ -1,13 +1,19 @@
 const express = require("express")
+const cors = require('cors')
 const morgan = require("morgan")
 const bodyparser = require("body-parser")
 const {
 	sequelize
 } = require('./models')
 const config = require('./config')
+const dotenv = require("dotenv")
+dotenv.config()
 
 const app = express();
-
+const corsOption = {
+	origin: process.env.Front_URL
+}
+app.use(cors(corsOption))
 app.use(morgan("combined"))
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({
