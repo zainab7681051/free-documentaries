@@ -6,7 +6,8 @@
       persistent
     >
     <template v-slot:activator="{ on, attrs }">
-      <v-container v-if="isUserLoggedIn">
+      <v-container v-if="isUserLoggedIn"
+      align="center">
           <v-row>
             <v-col>
               <div 
@@ -41,36 +42,24 @@
 
           <v-row>
             <v-col
-            v-if="!isUserLoggedIn"
-            v-for="n in 24"
-            :key="n"
-            cols="4"
-            >
-
-              <v-card 
-              height="400"
-              width ="600"
-              style="border:3px solid #ab92b3;">
-                
-              </v-card>
-            </v-col>
-
-            <v-col
             v-if="isUserLoggedIn"
             v-for="doc in docs"
             :key="doc.id"
-            cols="4">
+            cols="12" sm="12"
+            md="6" lg="4" xl="3">
               
-              <v-card 
-              height="400"
-              width="600" 
+              <v-card
+              block
+              class="mt-2 mb-2"
+              width="100%" 
               style="border:3px solid #ab92b3;">
               
                 <v-card-title>
                   <v-img
-                  contain
+                  class="mt-4"
+                  width="100%"
+                  aspect-ratio="2"                    
                   :src="doc.imageAdress"
-                  height="250"
                   >
                     <template v-slot:placeholder>
                       <v-row
@@ -93,13 +82,13 @@
                 <v-divider></v-divider>
                   
                   <v-btn color="green"
-                  class="mt-2"
+                  class="mt-2 mb-2"
                   @click="clear; setDoc(doc); editingDoc=true; dialog=true;">
                     edit
                   </v-btn>
                   
                   <v-btn color="red" 
-                  class="ml-2 mt-2"
+                  class="ml-2 mt-2 mb-2"
                   @click="deleteOne(doc.id)">
                     delete
                   </v-btn>

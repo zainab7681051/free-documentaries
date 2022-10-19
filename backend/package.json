@@ -5,7 +5,7 @@
   "main": "index.js",
   "private": "true",
   "scripts": {
-    "index": "concurrently \"npm run seed\" \"npm run serve\"",
+    "index": "concurrently \"npm run serve\"",
     "seed": "node ./seed/index.js",
     "prebuild": "babel ./src --out-dir build",
     "build": "node ./build/index.js",

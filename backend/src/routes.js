@@ -1,9 +1,9 @@
-const AuethController=require('./controllers/authentication.js')
-const isUserAuethController=require('./controllers/isUserAuthenticated.js')
-const ValidController=require('./controllers/validations')
-const docsController=require('./controllers/docsControllers.js')
+const AuethController = require('./controllers/authentication.js')
+const isUserAuethController = require('./controllers/isUserAuthenticated.js')
+const ValidController = require('./controllers/validations')
+const docsController = require('./controllers/docsControllers.js')
 
-module.exports=(app)=>{
+module.exports = (app) => {
 	/*USERS*/
 	app.get('/docs',
 		docsController.getAll)
@@ -52,4 +52,12 @@ module.exports=(app)=>{
 	app.put('/admin/docs/:id',
 		isUserAuethController,
 		docsController.update)
+
+	/*HEALTH CHECK*/
+	app.get('/check', (req, res) => {
+		res.status(200)
+			.send({
+				message: 'health check passed'
+			})
+	})
 }

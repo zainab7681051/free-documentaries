@@ -17,21 +17,20 @@
                 height="300">
                   <template v-slot:activator="{on, attrs}">                  
                     <v-row>
-                	<v-col cols="12">
-                      <v-card 
+                	<v-col cols="12" sm="12" md="6" lg="4" xl="3"
                       v-for="doc in docs"
-                      class="mt-2 mb-2"
-                      :key="doc.id"
+                      :key="doc.id" >
+                      <v-card
                       block
-                      width="70%"
+                      class="mt-2 mb-2 mr-2 ml-2"
+                      width="100%"
                       style="border:3px solid #ab92b3;">
                       <v-row>              
-                            <v-col cols="12" md="6" lg="4">
+                            <v-col cols="12">
                             <v-img
                             class="mt-4"
                             width="100%"
                             aspect-ratio="2"
-                            contain
                             :src ="doc.imageAdress"
                             >
                             <template v-slot:placeholder>
@@ -49,16 +48,16 @@
                             </v-img>
                           </v-col>
 
-                              <v-col cols="12" md="6" lg="4">
+                              <v-col cols="12">
                                 <div
-                                class="ml-2 mt-10 mb-2 text-md lg:text-xl">
+                                class="ml-1 mt-1 mb-1 text-md lg:text-xl">
                                   {{doc.title}}
                                 </div>
                               </v-col>
 
-                              <v-col cols="12" md="6" lg="4">
+                              <v-col cols="12">
                                 <div
-                                class="ml-2 mt-5 mb-2 px-2
+                                class="ml-1 mt-1 mb-1 px-2
                                 ">
                                 <v-btn class="mt-2 mb-2 ml-2 mr-2
                                 px-0.5 py-0.5 text-sm
@@ -76,7 +75,7 @@
                                     style="border:1.5px solid #ab92b3;">
                                   <v-card-text
                                   class="text-body-2 text-sm-body-1
-                                    text-md-h5 text-left text-lg-h3 text--seconday">
+                                    text-md-h9 text-left text-lg-h8 text-xl-h7 text--seconday">
                                     <p class="font-weight-bold">Description:</p> {{doc.description}}
                                   </v-card-text>
                                   </v-card>
@@ -84,7 +83,7 @@
                                 </div>
                               </v-col>
                               
-                              <v-col cols="12" md="6" lg="4">
+                              <v-col cols="12">
                                 <div> Tags: 
                                 <v-btn
                                 v-for="genre in doc.genres"
@@ -101,7 +100,7 @@
                                 </div>
                               </v-col>
 
-                              <v-col cols="12" md="6" lg="4">
+                              <v-col cols="12">
                                 <v-btn
                                 color="primary"
                                 class="block mt-2 mr-2 w-full px-1 py-0.5 md:px-5 md:py-2 lg:px-7 lg:py-4 text-800 hover:text-white hover:bg-blue-500"
