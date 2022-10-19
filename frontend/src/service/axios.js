@@ -4,7 +4,7 @@ import axios from 'axios'
 import store from '../store'
 export default () => {
 	return axios.create({
-		baseURL: process.env.URL,
+		baseURL: "https://free-documentaries-api.onrender.com/",
 		headers: {
 			"Content-type": "application/json",
 			Authorization: `Bearer ${store.state.token}`
