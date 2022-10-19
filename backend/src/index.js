@@ -8,11 +8,8 @@ const {
 const config = require('./config')
 
 const app = express();
-let corsOption = {
-	origin: process.env.FRONT_URL
-}
 
-app.use(cors(corsOption))
+app.use(cors())
 app.use(morgan("combined"))
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({
