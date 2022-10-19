@@ -1,5 +1,4 @@
 const express = require("express")
-const cors = require("cors")
 const morgan = require("morgan")
 const bodyparser = require("body-parser")
 const {
@@ -9,7 +8,6 @@ const config = require('./config')
 
 const app = express();
 
-app.use(cors())
 app.use(morgan("combined"))
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({
