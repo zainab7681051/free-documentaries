@@ -5,8 +5,7 @@ user can watch free YouTube documentaries embedded inside the page and download 
 Admin user can add, edit, delete documentaries, and the admin page is protected from unauthorised user access.
 #
 # Preview
-![caption](screenshot/free-documentaries.gif)
->>>>>>> 484639472741ba62180a7f8378b890095d52dcaf
+### this project is deployd to and hosted on render.com at https://free-documentaries.onrender.com/ and as if this moment this web app is live.
 # 
 # tools & frameworks
 the following `stack` of tools and frameworks were used in this project
@@ -49,4 +48,4 @@ then, to run it, type
 ```
 vue serve
 ```
-finally, click or copy the pagelink in the vue CLI prompt/git window and head towards the browser to see the app.
+finally, click amd copy the pagelink in the vue CLI prompt/git window and head towards the browser to see the app.
