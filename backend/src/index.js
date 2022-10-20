@@ -11,7 +11,7 @@ dotenv.config()
 
 const app = express();
 const corsOption = {
-	origin: process.env.Front_URL
+	origin: process.env.URL
 }
 app.use(cors(corsOption))
 app.use(morgan("combined"))
