@@ -29,7 +29,6 @@ import DocComp from './DocComp.vue'
 import EditProfComp from './EditProfComp.vue'
 import AboutComp from './AboutComp.vue'
 import ContactComp from './ContactComp.vue'
-import DownloadComp from './DownloadComp.vue'
 import {mapState} from 'vuex'
 
 export default {
@@ -53,7 +52,6 @@ export default {
     EditProfComp,
     AboutComp,
     ContactComp,
-    DownloadComp
   }
 }
 
