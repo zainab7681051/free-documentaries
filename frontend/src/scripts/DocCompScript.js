@@ -13,7 +13,6 @@ export default {
 		youtubeId: '',
 		title: '',
 		docs: {},
-		download: false,
 		dialog2: false,
 		loading: false,
 		expandDesc: {

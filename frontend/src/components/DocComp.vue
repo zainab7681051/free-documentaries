@@ -103,23 +103,10 @@
                               <v-col cols="12">
                                 <v-btn
                                 color="primary"
-                                class="block mt-2 mr-2 w-full px-1 py-0.5 md:px-5 md:py-2 lg:px-7 lg:py-4 text-800 hover:text-white hover:bg-blue-500"
+                                class="block mt-2 w-full px-1 py-0.5 md:px-5 md:py-2 lg:px-7 lg:py-4 text-800 hover:text-white hover:bg-blue-500"
                                 @click="watch(doc.youtubeId,doc.title)"
                                 >
                                   Watch
-                                </v-btn>
-
-                                <v-btn
-                                color="error"
-                                class="block mt-2 ml-2 w-full px-1 py-0.5 lg:px-7 lg:py-4 text-800 hover:text-white hover:bg-red-500"
-                                :to="{
-                                    name: 'download', 
-                                    params:{
-                                      docId: doc.id+'+'+doc.youtubeId
-                                    }
-                                  }">
-                                  Download
-                                  <!-- @click="download=true; dialog2=true" -->
                                 </v-btn>
                               </v-col>
                           </v-row>
