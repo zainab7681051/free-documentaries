@@ -10,10 +10,8 @@ const dotenv = require("dotenv")
 dotenv.config()
 
 const app = express();
-const corsOption = {
-	origin: process.env.URL
-}
-app.use(cors(corsOption))
+
+app.use(cors("https://free-documentaries.onrender.com"))
 app.use(morgan("combined"))
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({
