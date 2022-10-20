@@ -7,6 +7,13 @@ Admin user can add, edit, delete documentaries, and the admin page is protected 
 # Preview
 ### this project is deployd to and hosted on render.com at https://free-documentaries.onrender.com/ and as if this moment this web app is live.
 # 
+***Render is a unified cloud to build and run all your apps and websites. It has free TLS certificates, a global CDN, DDoS protection, private networks, and auto deploys from Git.***
+# 
+#### WARNING!
+Web Services on the free plan are automatically spun down after 15 minutes of inactivity. When a new request for a free service comes in, Render spins it up again so it can process the request.
+
+This can cause a response delay of up to 30 seconds for the first request that comes in after a period of inactivity.
+# 
 # tools & frameworks
 the following `stack` of tools and frameworks were used in this project
 * database:
