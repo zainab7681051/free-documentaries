@@ -2,12 +2,12 @@
 
 import axios from 'axios'
 import store from '../store'
-const dotenv = require("dotenv")
+import dotenv from 'dotenv'
 dotenv.config()
 
 export default () => {
 	return axios.create({
-		baseURL: process.env.BACK_URL
+		baseURL: process.env.BACK_URL,
 		headers: {
 			"Content-type": "application/json",
 			Authorization: `Bearer ${store.state.token}`
