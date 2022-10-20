@@ -2,12 +2,10 @@
 
 import axios from 'axios'
 import store from '../store'
-import dotenv from 'dotenv'
-dotenv.config()
 
 export default () => {
 	return axios.create({
-		baseURL: process.env.BACK_URL,
+		baseURL: "https://free-documentaries-api.onrender.com:2000/",
 		headers: {
 			"Content-type": "application/json",
 			Authorization: `Bearer ${store.state.token}`
