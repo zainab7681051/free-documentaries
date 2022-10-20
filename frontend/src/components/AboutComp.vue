@@ -9,7 +9,7 @@
           <v-card-subtitle class="text--primary"> Zainab, FULL STACK DEVELOPER
           </v-card-subtitle>
         <v-card-text>
-          Hi, I'm Zainab, a web developer. I designed and developed this project using Vue and Vuetify and some Tailwind Css here and there. the backend of this project is in Nodejs Express with Postgres Database. I create other projects like this. You can find more in my <a href="" class="link">Porfolio</a> and you can check out my <a href="" class="link">Github</a> repos for the source-code.  
+          Hi, I'm Zainab, a web developer. I designed and developed this project using Vue and Vuetify and some Tailwind Css here and there. the backend of this project is in Nodejs Express with Postgres Database. I create other projects like this. You can find more in my <a href="" class="link">Porfolio</a> and you can check out my <a href="https://github.com/zainab7681051" class="link">Github</a> repos for the source-code.  
         </v-card-text>
       </v-card>
     </v-col>
