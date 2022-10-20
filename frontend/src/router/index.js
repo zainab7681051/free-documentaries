@@ -4,51 +4,46 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/docs',
-    name: 'docs',
-    component: ()=> import('../views/DocView.vue')
+	{
+		path: '/docs',
+		name: 'docs',
+		component: () => import('../views/DocView.vue')
   },
-  {
-    path: '/about',
-    name: 'about',
-    component:()=> import('../views/AboutView.vue')
+	{
+		path: '/about',
+		name: 'about',
+		component: () => import('../views/AboutView.vue')
   },
-  {
-    path: '/contact',
-    name: 'contact',
-    component:()=> import('../views/ContactView.vue')
+	{
+		path: '/contact',
+		name: 'contact',
+		component: () => import('../views/ContactView.vue')
   },
-  {
-    path: '/download/:docId',
-    name: 'download',
-    component:()=> import('../views/DownloadView.vue')
+	{
+		path: '/admin-register',
+		name: 'register',
+		component: () => import('../views/Register.vue')
   },
-  {
-    path: '/admin-register',
-    name: 'register',
-    component:()=> import('../views/Register.vue')
+	{
+		path: '/admin-login',
+		name: 'login',
+		component: () => import('../views/Login.vue')
   },
-  {
-    path: '/admin-login',
-    name: 'login',
-    component:()=> import('../views/Login.vue')
+	{
+		path: '/admin-profile',
+		name: 'edit-profile',
+		component: () => import('../views/EditProfView.vue')
   },
-  {
-    path: '/admin-profile',
-    name: 'edit-profile',
-    component:()=> import('../views/EditProfView.vue')
-  },
-  {
-    path: '/admin-dashboard',
-    name: 'dasboard',
-    component:()=> import('../views/AdminDashView.vue')
+	{
+		path: '/admin-dashboard',
+		name: 'dasboard',
+		component: () => import('../views/AdminDashView.vue')
   },
 ]
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
+	mode: 'history',
+	base: process.env.BASE_URL,
+	routes
 })
 export default router

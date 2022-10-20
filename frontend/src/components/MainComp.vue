@@ -13,9 +13,7 @@
 
           <about-comp v-if="msg=='ABOUT US'"/>
 
-          <contact-comp v-if="msg=='CONTACT US'"/> 
-          
-          <download-comp v-if="msg=='DOWNLOAD'"/>
+          <contact-comp v-if="msg=='CONTACT US'"/>
           
           <doc-comp v-if="msg=='FREE DOCUMENTARIES FETCHED FROM YOUTUBE'"/> 
           
