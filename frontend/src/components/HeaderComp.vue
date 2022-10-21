@@ -125,13 +125,20 @@
 
         <v-list-item
         class="d-flex d-sm-none"
-        ><v-switch
-        v-model="$vuetify.theme.dark"
-        label="change theme"
-        class="mt-6"
-        color="#ab92b3"
         >
-        </v-switch>
+        <v-btn
+        @click="$vuetify.theme.dark=!$vuetify.theme.dark"
+        color="#ab92b3"
+        icon
+        >
+        <v-icon v-if="!$vuetify.theme.dark">
+          mdi-moon-waning-crescent
+        </v-icon>
+
+        <v-icon v-if="$vuetify.theme.dark">
+          mdi-white-balance-sunny
+        </v-icon>
+        </v-btn>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
