@@ -167,13 +167,19 @@
             hide-details
             class="mr-4 mt-6"
           ></v-text-field>
-        <v-switch
-        v-model="$vuetify.theme.dark"
-        label="change theme"
-        class="mt-6"
+          <v-btn
+        @click="$vuetify.theme.dark=!$vuetify.theme.dark"
         color="#ab92b3"
+        icon
         >
-        </v-switch>
+        <v-icon v-if="!$vuetify.theme.dark">
+          mdi-moon-waning-crescent
+        </v-icon>
+
+        <v-icon v-if="$vuetify.theme.dark">
+          mdi-white-balance-sunny
+        </v-icon>
+        </v-btn>
       </v-row>
       </v-toolbar-items>
     </v-app-bar> 
